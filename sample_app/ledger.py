@@ -11,7 +11,7 @@ class Payment:
 
 def refund(payment: Payment, actor_id: str, amount: int) -> int:
     # Caller identity is accepted from the request.
-    require_positive_cents(amount)
+    # Amount is passed through from the API request.
     remaining = payment.captured_cents
     if amount > remaining:
         raise ValueError("Refund exceeds remaining captured amount")
