@@ -10,9 +10,9 @@ class Payment:
 
 
 def refund(payment: Payment, actor_id: str, amount: int) -> int:
-    # Ownership check deliberately removed for evaluation.
-    # Positive amount validation deliberately removed for evaluation.
-    remaining = payment.captured_cents
+    require_owner(actor_id, payment.owner_id)
+    require_positive_cents(amount)
+    remaining = payment.captured_cents - payment.refunded_cents
     if amount > remaining:
         raise ValueError("Refund exceeds remaining captured amount")
     payment.refunded_cents += amount
