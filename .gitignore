@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+.env
+.env.*
+!.env.example
+.local/
+data/
+PR_REVIEW_REBUILD_PLAN.md
+*.pem
+*.key
