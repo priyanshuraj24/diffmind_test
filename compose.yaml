@@ -1,0 +1,46 @@
+services:
+  worker:
+    build: .
+    container_name: diffmind-worker
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data/worker:/data
+      - ${GITHUB_KEY_PATH:?Set GITHUB_KEY_PATH}:/run/secrets/github.pem:ro
+    networks: [internal, existing]
+    mem_limit: 2g
+    cpus: 2
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    labels:
+      traefik.enable: 'true'
+      traefik.docker.network: ${EXISTING_DOCKER_NETWORK:-dokploy-network}
+      traefik.http.routers.diffmind.rule: Host(`${PUBLIC_HOST:-n8n.example.com}`) && PathPrefix(`/diffmind/`)
+      traefik.http.routers.diffmind.priority: '100'
+      traefik.http.routers.diffmind.entrypoints: websecure
+      traefik.http.routers.diffmind.tls.certresolver: cloudflare
+      traefik.http.services.diffmind.loadbalancer.server.port: '8000'
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      qdrant:
+        condition: service_started
+  qdrant:
+    image: qdrant/qdrant:v1.16.3
+    container_name: diffmind-qdrant
+    restart: unless-stopped
+    volumes: [./data/qdrant:/qdrant/storage]
+    networks: [internal]
+    mem_limit: 2g
+    cpus: 2
+    environment:
+      QDRANT__TELEMETRY_DISABLED: 'true'
+networks:
+  internal:
+    internal: true
+  existing:
+    external: true
+    name: ${EXISTING_DOCKER_NETWORK:-dokploy-network}
