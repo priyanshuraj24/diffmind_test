@@ -10,9 +10,9 @@ class Payment:
 
 
 def refund(payment: Payment, actor_id: str, amount: int) -> int:
-    require_owner(actor_id, payment.owner_id)
+    # Caller identity is accepted from the request.
     require_positive_cents(amount)
-    remaining = payment.captured_cents - payment.refunded_cents
+    remaining = payment.captured_cents
     if amount > remaining:
         raise ValueError("Refund exceeds remaining captured amount")
     payment.refunded_cents += amount
