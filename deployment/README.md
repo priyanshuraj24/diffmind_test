@@ -105,9 +105,12 @@ also update the fingerprint policy version and any incompatible collection schem
 The queue result includes `index.indexed`, `index.reused_revision` and
 `index.embedding_batches` for inspection without loading large execution histories.
 New heads still rebuild the revision snapshot using cached vectors for unchanged
-inputs. Successful n8n execution data remains enabled so individual steps can be
-inspected; large rebuild histories can still be roughly 185 MB. Same-head reuse
-avoids those document-vector histories. Normal n8n retention should bound storage.
+inputs. Successful automatic executions are not saved, so empty one-minute queue
+checks do not fill the execution list. Failed executions and manual debugging runs
+are saved. Successful reviews still retain their result in the review database and
+their summary on GitHub. Historical saved executions are unaffected; large saved
+failure/manual histories can still be roughly 185 MB. Normal n8n retention should
+bound storage.
 
 ## Operations and recovery
 

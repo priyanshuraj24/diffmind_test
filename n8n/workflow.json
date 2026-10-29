@@ -2981,9 +2981,10 @@
   ],
   "settings": {
     "executionOrder": "v1",
-    "saveDataSuccessExecution": "all",
+    "saveDataSuccessExecution": "none",
     "saveDataErrorExecution": "all",
     "saveManualExecutions": true,
+    "saveExecutionProgress": false,
     "executionTimeout": 2700
   },
   "active": false

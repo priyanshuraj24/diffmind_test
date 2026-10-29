@@ -148,6 +148,6 @@ for i,n in enumerate(nodes):
     n['position']=old.get('position',[(i%9)*270,(i//9)*280])
     for key in ('id','webhookId'):
         if key in old:n[key]=old[key]
-workflow={'name':'PR Review Bot','nodes':nodes,'connections':connections,'nodeGroups':json.loads((ROOT/'groups.json').read_text(encoding='utf8')),'settings':{'executionOrder':'v1','saveDataSuccessExecution':'all','saveDataErrorExecution':'all','saveManualExecutions':True,'executionTimeout':2700},'active':False}
+workflow={'name':'PR Review Bot','nodes':nodes,'connections':connections,'nodeGroups':json.loads((ROOT/'groups.json').read_text(encoding='utf8')),'settings':{'executionOrder':'v1','saveDataSuccessExecution':'none','saveDataErrorExecution':'all','saveManualExecutions':True,'saveExecutionProgress':False,'executionTimeout':2700},'active':False}
 (ROOT/'workflow.json').write_text(json.dumps(workflow,indent=2)+'\n',encoding='utf8',newline='\n')
 print(json.dumps({'nodes':len(nodes),'connections':sum(len(o) for c in connections.values() for o in c['main'])}))
