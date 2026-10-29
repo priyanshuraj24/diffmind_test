@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: diffmind
+      POSTGRES_PASSWORD: local-test-only
+      POSTGRES_DB: diffmind_test
+    ports: [127.0.0.1:16433:5432]
+    tmpfs: [/var/lib/postgresql/data]
+  qdrant:
+    image: qdrant/qdrant:v1.16.3
+    ports: [127.0.0.1:16434:6333]
+    environment:
+      QDRANT__TELEMETRY_DISABLED: 'true'

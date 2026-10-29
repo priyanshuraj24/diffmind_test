@@ -1,0 +1,24 @@
+services:
+  embeddings:
+    build:
+      context: .
+      dockerfile: embedding_service/Dockerfile
+    container_name: diffmind-embeddings
+    restart: unless-stopped
+    environment:
+      EMBEDDING_TOKEN: ${DIFFMIND_INTERNAL_TOKEN:?required}
+    volumes: [./data/worker:/data]
+    networks: [existing]
+    mem_limit: 1g
+    cpus: 2
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+networks:
+  existing:
+    external: true
+    name: ${EXISTING_DOCKER_NETWORK:-dokploy-network}
