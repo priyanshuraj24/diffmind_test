@@ -6,7 +6,7 @@ inline comments, summary updates, retries and revision retention. Open any node 
 inspect its input, output and implementation. There is no remote review worker.
 
 The original [PR Review Bot](https://n8n.weberaai.com/workflow/q4ifTzOOrmBYZlXE)
-contains 72 nodes in 10 groups. Its existing production webhook URL now enters the
+contains 75 nodes in 10 groups. Its existing production webhook URL now enters the
 rebuilt flow. The old forwarding workflows and temporary test workflow are inactive.
 
 ## Flow
@@ -16,7 +16,7 @@ rebuilt flow. The old forwarding workflows and temporary test workflow are inact
 3. Fetch immutable Git commits asynchronously so n8n's runner remains responsive, without checking out or executing repository code.
 4. Read trusted target-branch rules; parse full or incremental diffs and tracked blobs.
 5. Chunk source using function-boundary heuristics, line windows and a complete-input byte bound.
-6. Call separate dense and BM25 embedding nodes; upsert and count the Qdrant index.
+6. Reuse a verified index for the same revision, or call dense/BM25 embedding nodes in 128-input transport batches, map vectors with native Edit Fields, and verify the Qdrant count.
 7. Run semantic, lexical and exact-symbol searches, scoped to repository and head SHA.
 8. Fuse rankings and reserve evidence for each changed file.
 9. Ask DeepSeek to draft and independently verify findings; validate lines and citations.
@@ -30,7 +30,7 @@ run reviews or publish comments. DeepSeek is an external paid API; no GPU is req
 ## Source and tests
 
 - `n8n/workflow.json`: importable workflow, with the production route and canvas layout.
-- `n8n/code/`: JavaScript embedded in visible n8n Code nodes.
+- `n8n/code/`: JavaScript embedded in visible n8n Code nodes and field expressions.
 - `n8n/sql/`: queries embedded in PostgreSQL nodes, plus the database schema.
 - `n8n/build_workflow.py`: offline export builder; preserves node IDs and layout.
 - `embedding_service/`: inference API only.
@@ -83,6 +83,18 @@ offsets and line locations preserved; source text is never silently truncated.
 Dense queries use the same byte bound; lexical queries retain their separate budget.
 This conservative bound produces more chunks than character-only windows and may
 increase initial indexing time. Changing the embedding model requires revalidating it.
+
+The inference API accepts 128 inputs per request but computes at most 24 texts at a
+time on CPU. Same-revision index reuse requires both a matching input fingerprint
+and Qdrant's exact point count; a missing or incomplete index is rebuilt. A new
+commit still writes a complete revision snapshot, while unchanged embedding inputs
+reuse the service cache. Changed-files-only Qdrant updates are not implemented.
+
+Measured on a roughly 9,200-chunk repository, the former 16-minute vector-packing
+step fell to 2.3 seconds with native field mapping. A 128-input warm-cache rebuild
+and review took 3m22s while an older review was also running; reusing that revision
+completed in 40 seconds. First-time embeddings still depend on repository size and
+CPU capacity. See the validation record for the workloads and limits of these timings.
 Skipped content is reported as partial coverage. Embeddings run with a 1 GB memory
 limit and Qdrant with 2 GB; large-repository peak usage and latency remain unmeasured.
 Monitor Git caches, execution history, PostgreSQL history and model cache disk usage.

@@ -73,14 +73,41 @@ The production App webhook is:
 
 `https://n8n.weberaai.com/webhook/3251bb49-11ef-4c93-8fec-681c0a73329d/webhook`
 
-It now enters the rebuilt original workflow `q4ifTzOOrmBYZlXE` (72 nodes). The URL
+It now enters the rebuilt original workflow `q4ifTzOOrmBYZlXE` (75 nodes). The URL
 was preserved; the old workflow contents were replaced. The test repository hook
 704289110 is inactive so events are not delivered twice. Global commands are replies
 in inline review discussions; timeline commands are not globally subscribed.
 
 Disabled workflows: `C07dOoQFSOWfHWTX`, `mZSc0OsVXmYslZKI` (old forwarding wrappers),
-and `xEChpD4m09cY8Pef` (native test copy). The old `diffmind-worker` was stopped at
+and `xEChpD4m09cY8Pef` (isolated benchmark flow with no GitHub publication). The old `diffmind-worker` was stopped at
 cutover and is not part of either current compose file.
+
+## Indexing performance and upgrades
+
+Deploy the embedding service supporting 128 inputs before publishing the workflow
+that uses those transport batches. Its dense and sparse inference batches remain
+24 texts, with two CPU threads and the existing 1 GiB container limit. The review
+logic and vector mapping remain visible in n8n; no review worker is involved.
+
+`Map vectors to source chunks` is a native Edit Fields node. Do not replace this
+small mapping with a Code node inside the index loop: the previous repeated runner
+handoff accounted for nearly 16 minutes on a 9,200-chunk warm-cache run. The mapping
+still rejects mismatched dense/sparse vector counts before writing to Qdrant.
+
+`Plan revision index reuse` fingerprints the chunk IDs, complete embedding inputs
+and model/chunk-policy version. A small manifest lives beside the bare Git cache in
+`diffmind-index-manifests/<head>.json`. `Require complete index` writes it atomically
+only after Qdrant's exact count matches. Both the manifest and count must match to
+skip indexing. Missing manifests, modified chunk inputs, partial indexes, and
+retention-pruned revisions rebuild safely. Changing model or chunk semantics must
+also update the fingerprint policy version and any incompatible collection schema.
+
+The queue result includes `index.indexed`, `index.reused_revision` and
+`index.embedding_batches` for inspection without loading large execution histories.
+New heads still rebuild the revision snapshot using cached vectors for unchanged
+inputs. Successful n8n execution data remains enabled so individual steps can be
+inspected; large rebuild histories can still be roughly 185 MB. Same-head reuse
+avoids those document-vector histories. Normal n8n retention should bound storage.
 
 ## Operations and recovery
 

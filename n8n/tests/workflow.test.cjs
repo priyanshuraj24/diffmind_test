@@ -113,3 +113,38 @@ test('all generated expressions and code nodes compile',()=>{
  assert(workflow.nodes.some(n=>n.name==='A job was claimed'));
  assert(!JSON.stringify(workflow).includes('/internal/run-once'));
 });
+
+test('native vector mapping pairs dense and lexical vectors and rejects partial responses',()=>{
+ const workflow=JSON.parse(fs.readFileSync(path.join(root,'workflow.json'),'utf8'));
+ const node=workflow.nodes.find(n=>n.name==='Map vectors to source chunks');
+ assert.equal(node.type,'n8n-nodes-base.set');
+ const evaluate=new Function('$','return ('+node.parameters.jsonOutput.slice(4,-3)+')');
+ const data={'Index chunk batches':{chunks:[{id:'one',text:'first'},{id:'two',text:'second'}]},
+  'Generate document embeddings':{vectors:[[1,2],[3,4]],cached:1},
+  'Generate lexical document vectors':{vectors:[{indices:[1],values:[2]},{indices:[3],values:[4]}]}};
+ const output=JSON.parse(evaluate(refs(data)));
+ assert.equal(output.reused,1);assert.equal(output.embedded,1);
+ assert.deepEqual(output.points[1],{id:'two',payload:{id:'two',text:'second'},vector:{dense:[3,4],bm25:{indices:[3],values:[4]}}});
+ data['Generate document embeddings'].vectors.pop();
+ assert.throws(()=>evaluate(refs(data)),/Embedding count mismatch/);
+});
+
+test('revision reuse requires a matching manifest and a complete Qdrant count',async()=>{
+ const data={'Fetch pinned Git commits':{root:'/repo',head:'a'.repeat(40)},
+  'Chunk source with line ranges':[{chunks:[{id:'one',search_text:'x.py\nmodule\ncontent'}],total_chunks:1}]};
+ let saved=null,writes=0;
+ const fakeFS={readFileSync(){if(!saved)throw new Error('missing');return JSON.stringify(saved);},mkdirSync(){},writeFileSync(p,s){saved=JSON.parse(s);writes++;},renameSync(){}};
+ const req=name=>name==='fs'?fakeFS:require(name);
+ const plan=(await run('index_plan.js',data,{},req))[0].json;
+ assert.equal(plan.manifest_matches,false);
+ await assert.rejects(run('index_complete.js',{'Plan revision index reuse':plan},{result:{count:0}},req),/Index count mismatch/);
+ assert.equal(writes,0);
+ await run('index_complete.js',{'Plan revision index reuse':plan,'Check reusable revision index':{result:{count:0}}},{result:{count:1}},req);
+ assert.equal((await run('index_plan.js',data,{},req))[0].json.manifest_matches,true);
+ data['Chunk source with line ranges'][0].chunks[0].search_text='changed input with same ID';
+ assert.equal((await run('index_plan.js',data,{},req))[0].json.manifest_matches,false);
+ const workflow=JSON.parse(fs.readFileSync(path.join(root,'workflow.json'),'utf8'));
+ const condition=workflow.nodes.find(n=>n.name==='Revision index is complete').parameters.conditions.conditions[0].leftValue;
+ const evaluate=new Function('$','$json','return ('+condition.slice(4,-3)+')');
+ assert.equal(evaluate(refs({'Plan revision index reuse':{manifest_matches:true,expected:1}}),{result:{count:0}}),false);
+});

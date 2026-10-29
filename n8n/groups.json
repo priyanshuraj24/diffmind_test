@@ -37,9 +37,7 @@
       "Read trusted repository rules",
       "Parse full and incremental diffs",
       "Read tracked source blobs",
-      "Chunk source with line ranges",
-      "Clear incomplete revision index",
-      "Load prepared chunk batches"
+      "Chunk source with line ranges"
     ],
     "description": "Fetch immutable Git commits, parse diffs, read trusted rules and chunk tracked source files."
   },
@@ -47,17 +45,22 @@
     "id": "368d0a03-b11d-4b72-ae9d-cc3e612c87ea",
     "name": "Index repository chunks",
     "nodeNames": [
+      "Plan revision index reuse",
+      "Check reusable revision index",
+      "Revision index is complete",
+      "Clear incomplete revision index",
+      "Load prepared chunk batches",
       "Index chunk batches",
       "Batch contains source chunks",
       "Generate document embeddings",
       "Generate lexical document vectors",
-      "Attach vectors to source chunks",
+      "Map vectors to source chunks",
       "Write chunks to Qdrant",
       "Record empty source batch",
       "Check indexed revision count",
       "Require complete index"
     ],
-    "description": "Batch local dense and BM25 embeddings, upsert Qdrant points and verify index completeness."
+    "description": "Reuse a verified revision index; otherwise batch embeddings, map vectors with native fields and verify Qdrant counts."
   },
   {
     "id": "72199eff-6863-4d88-8d26-da7cae410992",

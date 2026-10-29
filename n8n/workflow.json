@@ -18,7 +18,7 @@
         -1200,
         0
       ],
-      "id": "c2460b33-7a3f-4413-b2d7-ef805cec50ab",
+      "id": "e0aa7dc7-c72b-41ba-8801-449bde1d4ae3",
       "webhookId": "7778f1fb-648d-4515-b62c-755225592c7b"
     },
     {
@@ -32,7 +32,7 @@
         -950,
         0
       ],
-      "id": "4206e427-a74f-495f-863e-3154caab6403"
+      "id": "f27392be-175f-4717-9056-627a4b544d0a"
     },
     {
       "name": "Is webhook ping",
@@ -64,7 +64,7 @@
         -700,
         0
       ],
-      "id": "72ffe3b1-7d06-4636-a65b-82ba00769469"
+      "id": "1189c10b-a52a-45c7-9fb1-bc0b2f0d8335"
     },
     {
       "name": "Acknowledge ping",
@@ -77,7 +77,7 @@
         -700,
         -240
       ],
-      "id": "77743e61-9375-4856-8d4b-01687140de55"
+      "id": "2f6076cd-0683-49ec-b56b-a7f918765682"
     },
     {
       "name": "Sign App identity for intake",
@@ -90,7 +90,7 @@
         0,
         0
       ],
-      "id": "d78be235-c19d-4ab2-a161-a7e9de702ead"
+      "id": "6702fcaf-8373-43e9-84f7-8548af57fd68"
     },
     {
       "name": "Find App installation",
@@ -125,7 +125,7 @@
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 1000,
-      "id": "362f2eb5-40f1-4e27-a1ee-9a8d3e428887"
+      "id": "910ee26b-4c00-4302-86c5-7d0da27d795b"
     },
     {
       "name": "Intake installation token",
@@ -157,7 +157,7 @@
         560,
         0
       ],
-      "id": "5513a8bb-a3d3-4504-b1b7-4f74481d36ca"
+      "id": "1ac9ba3e-f493-43c0-9299-80e576919c7b"
     },
     {
       "name": "Fetch incoming PR",
@@ -200,7 +200,7 @@
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 1000,
-      "id": "7bc8e2ea-73c7-4bbd-b41d-378b740701d0"
+      "id": "174d5857-647f-453b-979e-21fc73518018"
     },
     {
       "name": "Is collaborator command",
@@ -232,7 +232,7 @@
         280,
         240
       ],
-      "id": "d0da77f6-f68a-4060-9997-20e35d10a584"
+      "id": "59334e3a-b837-43ef-b6d8-5b0ba5fdedda"
     },
     {
       "name": "Check command author permission",
@@ -275,7 +275,7 @@
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 1000,
-      "id": "98e3a4bf-6aa6-43d8-91ce-cd0b4d84d627"
+      "id": "c06b1c91-00ab-49eb-9e8b-4f89f032afb5"
     },
     {
       "name": "Normalize incoming review job",
@@ -288,7 +288,7 @@
         0,
         480
       ],
-      "id": "e1187bdd-dbaa-4aba-8bf7-6c502e204569"
+      "id": "036f523b-4c3b-4830-8664-a8abc36ae7c3"
     },
     {
       "name": "Deduplicate and queue event",
@@ -311,7 +311,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "ec6eaa6a-2a19-4bea-baf6-555c9c0f52ee"
+      "id": "88262704-f646-4e2d-b536-95413ffb6914"
     },
     {
       "name": "Process queued reviews",
@@ -331,7 +331,7 @@
         950,
         0
       ],
-      "id": "7a6afee7-667b-4b6a-9557-d0b8d68328c3"
+      "id": "4842750f-7b43-4d93-a7b8-102bd39f1ea0"
     },
     {
       "name": "Claim next review job",
@@ -354,7 +354,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "cac557ff-8c30-4287-b4d4-31e7d0f5443c"
+      "id": "95716a49-b607-43c6-8d30-48221432752c"
     },
     {
       "name": "A job was claimed",
@@ -386,7 +386,7 @@
         1480,
         0
       ],
-      "id": "0df2c481-2f60-4743-9ac6-e16eb937d835"
+      "id": "94b4d672-866c-4b3e-8848-e72b73497dda"
     },
     {
       "name": "Sign App identity for review",
@@ -399,7 +399,7 @@
         1760,
         0
       ],
-      "id": "3efd810a-66ca-4f34-aefe-4d0cd011dbd4"
+      "id": "1f106649-7df6-4101-a186-bfcaa4545b50"
     },
     {
       "name": "Review installation token",
@@ -431,7 +431,7 @@
         1760,
         240
       ],
-      "id": "ff9098ac-ab44-4061-a92a-d115ad291fd4"
+      "id": "005d8bf2-e00c-4662-a16b-eed1d499c35f"
     },
     {
       "name": "Fetch current PR",
@@ -474,7 +474,7 @@
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 1000,
-      "id": "cc39c269-73e1-4843-ad8e-e8ea04cc81ba"
+      "id": "dc8a4c25-a9a3-4e28-bc4e-a7a9fae53378"
     },
     {
       "name": "Load previous review state",
@@ -497,7 +497,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "20fc3a7e-12d5-4548-914f-41b178a991ef"
+      "id": "acdba853-15df-4159-9116-e54a3e2310ec"
     },
     {
       "name": "Prepare review context",
@@ -510,7 +510,7 @@
         1200,
         480
       ],
-      "id": "c71c73ea-5b5e-4dd3-8b80-cd34e9a84570"
+      "id": "6609d20d-be77-4808-959e-88a1fc57cd86"
     },
     {
       "name": "Head still current and PR open",
@@ -542,7 +542,7 @@
         1480,
         480
       ],
-      "id": "1708490a-b605-4dd5-99d9-1a34d488fb89"
+      "id": "69c0727f-0594-4dd5-9cb7-c4ffc173f8d1"
     },
     {
       "name": "Mark superseded review",
@@ -565,7 +565,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "eee1111e-6269-404b-be54-7466ca69f5db"
+      "id": "51c1e4c4-33b6-48d9-ad4d-1854b8af296e"
     },
     {
       "name": "Resume saved publication",
@@ -597,7 +597,7 @@
         2100,
         500
       ],
-      "id": "0fcbf606-1064-437f-9866-9db18cff53cd"
+      "id": "8d3d65f8-8e21-4343-8090-7759421e0716"
     },
     {
       "name": "Fetch pinned Git commits",
@@ -610,7 +610,7 @@
         2400,
         0
       ],
-      "id": "5f1e959d-e8d3-4eb6-ad15-ff4c035dd813"
+      "id": "ddb4d695-7545-45bd-85d1-30367868687c"
     },
     {
       "name": "Read trusted repository rules",
@@ -623,7 +623,7 @@
         2680,
         0
       ],
-      "id": "78b03e78-fbda-456a-8f89-9bb93a4bc066"
+      "id": "f4cd5ff2-a895-496e-ad2f-0c0f0263fe3a"
     },
     {
       "name": "Parse full and incremental diffs",
@@ -636,7 +636,7 @@
         2960,
         0
       ],
-      "id": "bef1b922-8de1-4b92-9423-5dcf4b619a94"
+      "id": "57d7c065-b125-42ca-9734-747172425b45"
     },
     {
       "name": "Read tracked source blobs",
@@ -649,20 +649,99 @@
         2960,
         240
       ],
-      "id": "94f81595-ed4c-4e09-a77b-9c44e2a70134"
+      "id": "6a59349e-6c84-4029-9625-3fa4ce2d1336"
     },
     {
       "name": "Chunk source with line ranges",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "parameters": {
-        "jsCode": "// Bundled into the relevant n8n Code nodes; no remote review worker is called.\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst cp = require('child_process');\nconst sha = s => crypto.createHash('sha256').update(s).digest('hex');\nconst secretPattern = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\\b(?:ghp_|ghs_|github_pat_)[A-Za-z0-9_]{20,}|\\bsk-[A-Za-z0-9_-]{24,}/;\nfunction eligible(path, excludes=[]) {\n  if (!path || path.startsWith('/') || /[\\x00-\\x1f\"\\\\]/.test(path)) return false;\n  const parts=path.split('/'), name=parts.at(-1);\n  if(parts.some(p=>['..','.git','node_modules','vendor','dist','build','.next','.venv','coverage','__pycache__'].includes(p))) return false;\n  if(/^\\.env|\\.(pem|key|lock)$|-lock\\.json$|\\.min\\.js$/.test(name) || /^(credentials|secrets)\\./i.test(name)) return false;\n  if(!/\\.(py|ts|tsx|js|jsx|go|rs|java|cs|rb|php|c|cpp|h|md|sql|json|ya?ml|toml|graphql)$/.test(name)) return false;\n  return !excludes.some(g=>new RegExp('^'+g.split('*').map(p=>p.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('.*')+'$').test(path));\n}\nasync function git(path, args, options={}) {\n  const token=$('Review installation token').first().json.token;\n  const env={PATH:'/usr/local/bin:/usr/bin:/bin',HOME:'/home/node',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_CONFIG_COUNT:'3',\n    GIT_CONFIG_KEY_0:'http.https://github.com/.extraheader',GIT_CONFIG_VALUE_0:'Authorization: Basic '+Buffer.from('x-access-token:'+token).toString('base64'),\n    GIT_CONFIG_KEY_1:'core.hooksPath',GIT_CONFIG_VALUE_1:'/dev/null',GIT_CONFIG_KEY_2:'core.quotePath',GIT_CONFIG_VALUE_2:'false'};\n  try {\n    return await new Promise((resolve,reject)=>{\n      const child=cp.execFile('git',['--literal-pathspecs','-C',path,...args],\n        {env,timeout:120000,maxBuffer:60000000,encoding:options.binary?null:'utf8'},\n        (error,stdout,stderr)=>{if(error){error.stderr=stderr;reject(error);}else resolve(stdout);});\n      child.stdin.on('error',error=>{if(error.code!=='EPIPE')reject(error);});\n      child.stdin.end(options.input);\n    });\n  } catch(e){\n    // Never expose raw stderr, arguments, or environment: Git can echo credentials.\n    if(options.optional && !e.killed && [1,128].includes(e.code))return '';\n    const message=String(e.stderr||'');\n    let reason='exit '+(Number.isInteger(e.code)?e.code:'unavailable');\n    if(e.killed||e.code==='ETIMEDOUT')reason='timed out after 120 seconds';\n    else if(/(?:unable to create|already exists|another git process)[^\\n]*lock|shallow\\.lock/i.test(message))reason='repository lock contention';\n    else if(/Authentication failed|could not read Username|Repository not found|HTTP (?:401|403)/i.test(message))reason='repository access or authentication failed';\n    else if(/Could not resolve host|Failed to connect|Connection.*reset|RPC failed|timed out/i.test(message))reason='network transfer failed';\n    else if(/No space left on device/i.test(message))reason='disk full';\n    else if(/not our ref|couldn.t find remote ref|bad object/i.test(message))reason='requested commit unavailable';\n    throw new Error('Git '+args[0]+' failed: '+reason+'; credentials omitted');\n  }\n}\nfunction parseDiff(patch) {\n  const out={}; let path=null,old=null,now=null;\n  for(const line of patch.split('\\n')) {\n    if(line.startsWith('diff --git ')){path=null;old=null;now=null;}\n    else if(line.startsWith('--- ') && line.slice(4)!='/dev/null') path=line.slice(4).replace(/^a\\//,'');\n    else if(line.startsWith('+++ ')){if(line.slice(4)!='/dev/null')path=line.slice(4).replace(/^b\\//,'');if(path)out[path]??={LEFT:[],RIGHT:[],changed:[]};}\n    else if(line.startsWith('@@ ')){const m=line.match(/^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)(?:,\\d+)? @@/);if(m){old=+m[1];now=+m[2];out[path]??={LEFT:[],RIGHT:[],changed:[]};}}\n    else if(out[path] && old!==null){if(line.startsWith('-'))out[path].LEFT.push(old++);else if(line.startsWith('+')){out[path].RIGHT.push(now);out[path].changed.push(now++);}else if(line.startsWith(' ')){out[path].LEFT.push(old++);out[path].RIGHT.push(now++);}}\n  } return out;\n}\nconst lexical = s => s+'\\n'+s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replaceAll('_',' ');\nconst scope = (repo,head) => ({must:[{key:'repo',match:{value:repo}},{key:'head',match:{value:head}}]});\n\n// Bound the complete BGE WordPiece input by UTF-8 bytes, including metadata.\n// Leave 50 tokens of headroom for special tokens and query framing.\nconst DENSE_INPUT_BYTES = 450;\nfunction utf8Prefix(text, budget) {\n  let output='', bytes=0;\n  for(const character of text){const size=Buffer.byteLength(character,'utf8');if(bytes+size>budget)break;output+=character;bytes+=size;}\n  return output;\n}\n\nconst g=$('Fetch pinned Git commits').first().json,source=$('Read tracked source blobs').first().json;\nconst chunks=[],skipped=[...source.skipped];\nfor(const file of source.files){\n const lines=file.text.match(/[^\\n]*\\n|[^\\n]+$/g)||[];\n let lineNumber=1,offset=0,symbol='module',body='',start=1,startOffset=0,startColumn=1,end=1,header='';\n const flush=()=>{\n  if(!body)return;\n  const search_text=header+body;\n  if(Buffer.byteLength(search_text,'utf8')>DENSE_INPUT_BYTES)throw new Error('Embedding byte budget exceeded');\n  const id=sha(g.repo+':'+g.head+':'+file.path+':'+startOffset+':'+body).slice(0,32);\n  chunks.push({id:id.slice(0,8)+'-'+id.slice(8,12)+'-'+id.slice(12,16)+'-'+id.slice(16,20)+'-'+id.slice(20),repo:g.repo,head:g.head,path:file.path,start,end,start_column:startColumn,start_offset:startOffset,end_offset:startOffset+body.length,symbol,text:body,search_text});\n  body='';\n };\n for(const line of lines){\n  const match=line.match(/^\\s*(?:export\\s+)?(?:async\\s+)?(?:def|function|class|interface|struct|func|fn)\\s+([\\w]+)/);\n  if(match){flush();symbol=match[1];}\n  if(body && lineNumber-start>=32)flush();\n  let remaining=line,column=1;\n  while(remaining){\n   if(!body){start=lineNumber;startOffset=offset;startColumn=column;header=utf8Prefix(file.path,160)+'\\n'+utf8Prefix(symbol,64)+'\\n';}\n   const available=DENSE_INPUT_BYTES-Buffer.byteLength(header+body,'utf8');\n   // Prefer whole lines; fragment only a line which cannot fit on its own.\n   if(body && Buffer.byteLength(remaining,'utf8')>available){flush();continue;}\n   const piece=utf8Prefix(remaining,available);\n   if(!piece)throw new Error('Embedding prefix leaves no room for source');\n   body+=piece;end=lineNumber;remaining=remaining.slice(piece.length);offset+=piece.length;column+=piece.length;\n   if(remaining)flush();\n  }\n  lineNumber++;\n }\n flush();\n}\nif(chunks.length>30000)throw new Error('Index exceeds 30000 chunk budget; configure exclusions');\nconst groups=[];for(let i=0;i<chunks.length;i+=24)groups.push({json:{chunks:chunks.slice(i,i+24),total_chunks:chunks.length,skipped}});\nreturn groups.length?groups:[{json:{chunks:[],total_chunks:0,skipped}}];\n"
+        "jsCode": "// Bundled into the relevant n8n Code nodes; no remote review worker is called.\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst cp = require('child_process');\nconst sha = s => crypto.createHash('sha256').update(s).digest('hex');\nconst secretPattern = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\\b(?:ghp_|ghs_|github_pat_)[A-Za-z0-9_]{20,}|\\bsk-[A-Za-z0-9_-]{24,}/;\nfunction eligible(path, excludes=[]) {\n  if (!path || path.startsWith('/') || /[\\x00-\\x1f\"\\\\]/.test(path)) return false;\n  const parts=path.split('/'), name=parts.at(-1);\n  if(parts.some(p=>['..','.git','node_modules','vendor','dist','build','.next','.venv','coverage','__pycache__'].includes(p))) return false;\n  if(/^\\.env|\\.(pem|key|lock)$|-lock\\.json$|\\.min\\.js$/.test(name) || /^(credentials|secrets)\\./i.test(name)) return false;\n  if(!/\\.(py|ts|tsx|js|jsx|go|rs|java|cs|rb|php|c|cpp|h|md|sql|json|ya?ml|toml|graphql)$/.test(name)) return false;\n  return !excludes.some(g=>new RegExp('^'+g.split('*').map(p=>p.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('.*')+'$').test(path));\n}\nasync function git(path, args, options={}) {\n  const token=$('Review installation token').first().json.token;\n  const env={PATH:'/usr/local/bin:/usr/bin:/bin',HOME:'/home/node',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_CONFIG_COUNT:'3',\n    GIT_CONFIG_KEY_0:'http.https://github.com/.extraheader',GIT_CONFIG_VALUE_0:'Authorization: Basic '+Buffer.from('x-access-token:'+token).toString('base64'),\n    GIT_CONFIG_KEY_1:'core.hooksPath',GIT_CONFIG_VALUE_1:'/dev/null',GIT_CONFIG_KEY_2:'core.quotePath',GIT_CONFIG_VALUE_2:'false'};\n  try {\n    return await new Promise((resolve,reject)=>{\n      const child=cp.execFile('git',['--literal-pathspecs','-C',path,...args],\n        {env,timeout:120000,maxBuffer:60000000,encoding:options.binary?null:'utf8'},\n        (error,stdout,stderr)=>{if(error){error.stderr=stderr;reject(error);}else resolve(stdout);});\n      child.stdin.on('error',error=>{if(error.code!=='EPIPE')reject(error);});\n      child.stdin.end(options.input);\n    });\n  } catch(e){\n    // Never expose raw stderr, arguments, or environment: Git can echo credentials.\n    if(options.optional && !e.killed && [1,128].includes(e.code))return '';\n    const message=String(e.stderr||'');\n    let reason='exit '+(Number.isInteger(e.code)?e.code:'unavailable');\n    if(e.killed||e.code==='ETIMEDOUT')reason='timed out after 120 seconds';\n    else if(/(?:unable to create|already exists|another git process)[^\\n]*lock|shallow\\.lock/i.test(message))reason='repository lock contention';\n    else if(/Authentication failed|could not read Username|Repository not found|HTTP (?:401|403)/i.test(message))reason='repository access or authentication failed';\n    else if(/Could not resolve host|Failed to connect|Connection.*reset|RPC failed|timed out/i.test(message))reason='network transfer failed';\n    else if(/No space left on device/i.test(message))reason='disk full';\n    else if(/not our ref|couldn.t find remote ref|bad object/i.test(message))reason='requested commit unavailable';\n    throw new Error('Git '+args[0]+' failed: '+reason+'; credentials omitted');\n  }\n}\nfunction parseDiff(patch) {\n  const out={}; let path=null,old=null,now=null;\n  for(const line of patch.split('\\n')) {\n    if(line.startsWith('diff --git ')){path=null;old=null;now=null;}\n    else if(line.startsWith('--- ') && line.slice(4)!='/dev/null') path=line.slice(4).replace(/^a\\//,'');\n    else if(line.startsWith('+++ ')){if(line.slice(4)!='/dev/null')path=line.slice(4).replace(/^b\\//,'');if(path)out[path]??={LEFT:[],RIGHT:[],changed:[]};}\n    else if(line.startsWith('@@ ')){const m=line.match(/^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)(?:,\\d+)? @@/);if(m){old=+m[1];now=+m[2];out[path]??={LEFT:[],RIGHT:[],changed:[]};}}\n    else if(out[path] && old!==null){if(line.startsWith('-'))out[path].LEFT.push(old++);else if(line.startsWith('+')){out[path].RIGHT.push(now);out[path].changed.push(now++);}else if(line.startsWith(' ')){out[path].LEFT.push(old++);out[path].RIGHT.push(now++);}}\n  } return out;\n}\nconst lexical = s => s+'\\n'+s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replaceAll('_',' ');\nconst scope = (repo,head) => ({must:[{key:'repo',match:{value:repo}},{key:'head',match:{value:head}}]});\n\n// Bound the complete BGE WordPiece input by UTF-8 bytes, including metadata.\n// Leave 50 tokens of headroom for special tokens and query framing.\nconst DENSE_INPUT_BYTES = 450;\nfunction utf8Prefix(text, budget) {\n  let output='', bytes=0;\n  for(const character of text){const size=Buffer.byteLength(character,'utf8');if(bytes+size>budget)break;output+=character;bytes+=size;}\n  return output;\n}\n\nconst g=$('Fetch pinned Git commits').first().json,source=$('Read tracked source blobs').first().json;\nconst chunks=[],skipped=[...source.skipped];\nfor(const file of source.files){\n const lines=file.text.match(/[^\\n]*\\n|[^\\n]+$/g)||[];\n let lineNumber=1,offset=0,symbol='module',body='',start=1,startOffset=0,startColumn=1,end=1,header='';\n const flush=()=>{\n  if(!body)return;\n  const search_text=header+body;\n  if(Buffer.byteLength(search_text,'utf8')>DENSE_INPUT_BYTES)throw new Error('Embedding byte budget exceeded');\n  const id=sha(g.repo+':'+g.head+':'+file.path+':'+startOffset+':'+body).slice(0,32);\n  chunks.push({id:id.slice(0,8)+'-'+id.slice(8,12)+'-'+id.slice(12,16)+'-'+id.slice(16,20)+'-'+id.slice(20),repo:g.repo,head:g.head,path:file.path,start,end,start_column:startColumn,start_offset:startOffset,end_offset:startOffset+body.length,symbol,text:body,search_text});\n  body='';\n };\n for(const line of lines){\n  const match=line.match(/^\\s*(?:export\\s+)?(?:async\\s+)?(?:def|function|class|interface|struct|func|fn)\\s+([\\w]+)/);\n  if(match){flush();symbol=match[1];}\n  if(body && lineNumber-start>=32)flush();\n  let remaining=line,column=1;\n  while(remaining){\n   if(!body){start=lineNumber;startOffset=offset;startColumn=column;header=utf8Prefix(file.path,160)+'\\n'+utf8Prefix(symbol,64)+'\\n';}\n   const available=DENSE_INPUT_BYTES-Buffer.byteLength(header+body,'utf8');\n   // Prefer whole lines; fragment only a line which cannot fit on its own.\n   if(body && Buffer.byteLength(remaining,'utf8')>available){flush();continue;}\n   const piece=utf8Prefix(remaining,available);\n   if(!piece)throw new Error('Embedding prefix leaves no room for source');\n   body+=piece;end=lineNumber;remaining=remaining.slice(piece.length);offset+=piece.length;column+=piece.length;\n   if(remaining)flush();\n  }\n  lineNumber++;\n }\n flush();\n}\nif(chunks.length>30000)throw new Error('Index exceeds 30000 chunk budget; configure exclusions');\n// Amortize n8n/HTTP overhead; the service still infers in batches of 24 on CPU.\nconst groups=[];for(let i=0;i<chunks.length;i+=128)groups.push({json:{chunks:chunks.slice(i,i+128),total_chunks:chunks.length,skipped}});\nreturn groups.length?groups:[{json:{chunks:[],total_chunks:0,skipped}}];\n"
       },
       "position": [
         2680,
         240
       ],
-      "id": "d9f1146c-286d-47cd-b1d4-cdfad2069da9"
+      "id": "aacd7ba7-d9ff-4944-a0fe-35c5905cd554"
+    },
+    {
+      "name": "Plan revision index reuse",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "// Bundled into the relevant n8n Code nodes; no remote review worker is called.\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst cp = require('child_process');\nconst sha = s => crypto.createHash('sha256').update(s).digest('hex');\nconst secretPattern = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\\b(?:ghp_|ghs_|github_pat_)[A-Za-z0-9_]{20,}|\\bsk-[A-Za-z0-9_-]{24,}/;\nfunction eligible(path, excludes=[]) {\n  if (!path || path.startsWith('/') || /[\\x00-\\x1f\"\\\\]/.test(path)) return false;\n  const parts=path.split('/'), name=parts.at(-1);\n  if(parts.some(p=>['..','.git','node_modules','vendor','dist','build','.next','.venv','coverage','__pycache__'].includes(p))) return false;\n  if(/^\\.env|\\.(pem|key|lock)$|-lock\\.json$|\\.min\\.js$/.test(name) || /^(credentials|secrets)\\./i.test(name)) return false;\n  if(!/\\.(py|ts|tsx|js|jsx|go|rs|java|cs|rb|php|c|cpp|h|md|sql|json|ya?ml|toml|graphql)$/.test(name)) return false;\n  return !excludes.some(g=>new RegExp('^'+g.split('*').map(p=>p.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('.*')+'$').test(path));\n}\nasync function git(path, args, options={}) {\n  const token=$('Review installation token').first().json.token;\n  const env={PATH:'/usr/local/bin:/usr/bin:/bin',HOME:'/home/node',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_CONFIG_COUNT:'3',\n    GIT_CONFIG_KEY_0:'http.https://github.com/.extraheader',GIT_CONFIG_VALUE_0:'Authorization: Basic '+Buffer.from('x-access-token:'+token).toString('base64'),\n    GIT_CONFIG_KEY_1:'core.hooksPath',GIT_CONFIG_VALUE_1:'/dev/null',GIT_CONFIG_KEY_2:'core.quotePath',GIT_CONFIG_VALUE_2:'false'};\n  try {\n    return await new Promise((resolve,reject)=>{\n      const child=cp.execFile('git',['--literal-pathspecs','-C',path,...args],\n        {env,timeout:120000,maxBuffer:60000000,encoding:options.binary?null:'utf8'},\n        (error,stdout,stderr)=>{if(error){error.stderr=stderr;reject(error);}else resolve(stdout);});\n      child.stdin.on('error',error=>{if(error.code!=='EPIPE')reject(error);});\n      child.stdin.end(options.input);\n    });\n  } catch(e){\n    // Never expose raw stderr, arguments, or environment: Git can echo credentials.\n    if(options.optional && !e.killed && [1,128].includes(e.code))return '';\n    const message=String(e.stderr||'');\n    let reason='exit '+(Number.isInteger(e.code)?e.code:'unavailable');\n    if(e.killed||e.code==='ETIMEDOUT')reason='timed out after 120 seconds';\n    else if(/(?:unable to create|already exists|another git process)[^\\n]*lock|shallow\\.lock/i.test(message))reason='repository lock contention';\n    else if(/Authentication failed|could not read Username|Repository not found|HTTP (?:401|403)/i.test(message))reason='repository access or authentication failed';\n    else if(/Could not resolve host|Failed to connect|Connection.*reset|RPC failed|timed out/i.test(message))reason='network transfer failed';\n    else if(/No space left on device/i.test(message))reason='disk full';\n    else if(/not our ref|couldn.t find remote ref|bad object/i.test(message))reason='requested commit unavailable';\n    throw new Error('Git '+args[0]+' failed: '+reason+'; credentials omitted');\n  }\n}\nfunction parseDiff(patch) {\n  const out={}; let path=null,old=null,now=null;\n  for(const line of patch.split('\\n')) {\n    if(line.startsWith('diff --git ')){path=null;old=null;now=null;}\n    else if(line.startsWith('--- ') && line.slice(4)!='/dev/null') path=line.slice(4).replace(/^a\\//,'');\n    else if(line.startsWith('+++ ')){if(line.slice(4)!='/dev/null')path=line.slice(4).replace(/^b\\//,'');if(path)out[path]??={LEFT:[],RIGHT:[],changed:[]};}\n    else if(line.startsWith('@@ ')){const m=line.match(/^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)(?:,\\d+)? @@/);if(m){old=+m[1];now=+m[2];out[path]??={LEFT:[],RIGHT:[],changed:[]};}}\n    else if(out[path] && old!==null){if(line.startsWith('-'))out[path].LEFT.push(old++);else if(line.startsWith('+')){out[path].RIGHT.push(now);out[path].changed.push(now++);}else if(line.startsWith(' ')){out[path].LEFT.push(old++);out[path].RIGHT.push(now++);}}\n  } return out;\n}\nconst lexical = s => s+'\\n'+s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replaceAll('_',' ');\nconst scope = (repo,head) => ({must:[{key:'repo',match:{value:repo}},{key:'head',match:{value:head}}]});\n\n// Bound the complete BGE WordPiece input by UTF-8 bytes, including metadata.\n// Leave 50 tokens of headroom for special tokens and query framing.\nconst DENSE_INPUT_BYTES = 450;\nfunction utf8Prefix(text, budget) {\n  let output='', bytes=0;\n  for(const character of text){const size=Buffer.byteLength(character,'utf8');if(bytes+size>budget)break;output+=character;bytes+=size;}\n  return output;\n}\n\nconst g=$('Fetch pinned Git commits').first().json;\nconst batches=$('Chunk source with line ranges').all().map(i=>i.json);\nconst chunks=batches.flatMap(b=>b.chunks);\n// Include the model/chunk policy and every complete embedding input. A matching\n// count alone cannot establish that the right data is stored for this revision.\nconst fingerprint=sha(JSON.stringify(['bge-small-en-v1.5:bm25:bytes450:v1',chunks.map(c=>[c.id,c.search_text])]));\nconst directory=g.root+'/diffmind-index-manifests';\nconst manifest_path=directory+'/'+g.head+'.json';\nlet saved=null;\ntry{saved=JSON.parse(fs.readFileSync(manifest_path,'utf8'));}catch{}\nreturn [{json:{expected:chunks.length,fingerprint,directory,manifest_path,\n manifest_matches:saved?.fingerprint===fingerprint && saved?.expected===chunks.length}}];\n"
+      },
+      "position": [
+        0,
+        950
+      ],
+      "id": "0086d92c-fc3a-46e7-9af7-0232f6be1734"
+    },
+    {
+      "name": "Check reusable revision index",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "parameters": {
+        "url": "http://diffmind-qdrant:6333/collections/diffmind_n8n_v3/points/count",
+        "method": "POST",
+        "options": {
+          "timeout": 180000,
+          "response": {
+            "response": {
+              "responseFormat": "json",
+              "fullResponse": false
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({filter:{must:[{key:'repo',match:{value:$('Claim next review job').first().json.repo} },{key:'head',match:{value:$('Claim next review job').first().json.head} }]},exact:true}) }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "position": [
+        280,
+        950
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "diffmindQdrantNative",
+          "name": "DiffMind Qdrant native"
+        }
+      },
+      "id": "5bbb9990-b511-4afd-a653-9dce8d6e1504"
+    },
+    {
+      "name": "Revision index is complete",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Plan revision index reuse').first().json.manifest_matches && $json.result.count === $('Plan revision index reuse').first().json.expected }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "position": [
+        560,
+        950
+      ],
+      "id": "bcfd5b49-5b18-45f9-8780-4b68f983249c"
     },
     {
       "name": "Clear incomplete revision index",
@@ -687,8 +766,8 @@
         "genericAuthType": "httpHeaderAuth"
       },
       "position": [
-        2400,
-        240
+        840,
+        950
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -697,7 +776,7 @@
         }
       },
       "executeOnce": true,
-      "id": "4da97fa3-a462-4e06-b023-96e25edf381f"
+      "id": "be4e2f7c-f19d-4725-a9b9-5a8168fca21d"
     },
     {
       "name": "Load prepared chunk batches",
@@ -707,10 +786,10 @@
         "jsCode": "return $('Chunk source with line ranges').all();"
       },
       "position": [
-        2400,
-        480
+        1120,
+        950
       ],
-      "id": "85eddf8e-38d2-4153-9a7e-048ff9e1d656"
+      "id": "cc0f9d32-d73a-4099-a8ee-c8faa2f74f87"
     },
     {
       "name": "Index chunk batches",
@@ -721,10 +800,10 @@
         "options": {}
       },
       "position": [
-        0,
-        950
+        1120,
+        1190
       ],
-      "id": "5ec30702-8ac3-4424-abfe-408352229889"
+      "id": "81f145f5-5829-42fa-97c1-6d5e64bf557d"
     },
     {
       "name": "Batch contains source chunks",
@@ -753,10 +832,10 @@
         }
       },
       "position": [
-        280,
-        950
+        840,
+        1190
       ],
-      "id": "ccacd338-3439-4cbf-8b03-8ec044936816"
+      "id": "6f130d28-89d6-43c6-afc6-e6f0bbe6a45d"
     },
     {
       "name": "Generate document embeddings",
@@ -782,7 +861,7 @@
       },
       "position": [
         560,
-        950
+        1190
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -790,7 +869,7 @@
           "name": "DiffMind local embeddings"
         }
       },
-      "id": "0b2e1ba2-bd66-4fbf-b10b-735893abb2f0"
+      "id": "59d1254f-ddb4-4107-b32f-1df01642355f"
     },
     {
       "name": "Generate lexical document vectors",
@@ -815,7 +894,7 @@
         "genericAuthType": "httpHeaderAuth"
       },
       "position": [
-        560,
+        280,
         1190
       ],
       "credentials": {
@@ -824,20 +903,23 @@
           "name": "DiffMind local embeddings"
         }
       },
-      "id": "cac2d555-02f9-459d-bd57-57fd3f2a4049"
+      "id": "de14e8a8-9e6a-4a82-b7e7-f1a2070dbaaa"
     },
     {
-      "name": "Attach vectors to source chunks",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "name": "Map vectors to source chunks",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "parameters": {
-        "jsCode": "// Bundled into the relevant n8n Code nodes; no remote review worker is called.\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst cp = require('child_process');\nconst sha = s => crypto.createHash('sha256').update(s).digest('hex');\nconst secretPattern = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\\b(?:ghp_|ghs_|github_pat_)[A-Za-z0-9_]{20,}|\\bsk-[A-Za-z0-9_-]{24,}/;\nfunction eligible(path, excludes=[]) {\n  if (!path || path.startsWith('/') || /[\\x00-\\x1f\"\\\\]/.test(path)) return false;\n  const parts=path.split('/'), name=parts.at(-1);\n  if(parts.some(p=>['..','.git','node_modules','vendor','dist','build','.next','.venv','coverage','__pycache__'].includes(p))) return false;\n  if(/^\\.env|\\.(pem|key|lock)$|-lock\\.json$|\\.min\\.js$/.test(name) || /^(credentials|secrets)\\./i.test(name)) return false;\n  if(!/\\.(py|ts|tsx|js|jsx|go|rs|java|cs|rb|php|c|cpp|h|md|sql|json|ya?ml|toml|graphql)$/.test(name)) return false;\n  return !excludes.some(g=>new RegExp('^'+g.split('*').map(p=>p.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('.*')+'$').test(path));\n}\nasync function git(path, args, options={}) {\n  const token=$('Review installation token').first().json.token;\n  const env={PATH:'/usr/local/bin:/usr/bin:/bin',HOME:'/home/node',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_CONFIG_COUNT:'3',\n    GIT_CONFIG_KEY_0:'http.https://github.com/.extraheader',GIT_CONFIG_VALUE_0:'Authorization: Basic '+Buffer.from('x-access-token:'+token).toString('base64'),\n    GIT_CONFIG_KEY_1:'core.hooksPath',GIT_CONFIG_VALUE_1:'/dev/null',GIT_CONFIG_KEY_2:'core.quotePath',GIT_CONFIG_VALUE_2:'false'};\n  try {\n    return await new Promise((resolve,reject)=>{\n      const child=cp.execFile('git',['--literal-pathspecs','-C',path,...args],\n        {env,timeout:120000,maxBuffer:60000000,encoding:options.binary?null:'utf8'},\n        (error,stdout,stderr)=>{if(error){error.stderr=stderr;reject(error);}else resolve(stdout);});\n      child.stdin.on('error',error=>{if(error.code!=='EPIPE')reject(error);});\n      child.stdin.end(options.input);\n    });\n  } catch(e){\n    // Never expose raw stderr, arguments, or environment: Git can echo credentials.\n    if(options.optional && !e.killed && [1,128].includes(e.code))return '';\n    const message=String(e.stderr||'');\n    let reason='exit '+(Number.isInteger(e.code)?e.code:'unavailable');\n    if(e.killed||e.code==='ETIMEDOUT')reason='timed out after 120 seconds';\n    else if(/(?:unable to create|already exists|another git process)[^\\n]*lock|shallow\\.lock/i.test(message))reason='repository lock contention';\n    else if(/Authentication failed|could not read Username|Repository not found|HTTP (?:401|403)/i.test(message))reason='repository access or authentication failed';\n    else if(/Could not resolve host|Failed to connect|Connection.*reset|RPC failed|timed out/i.test(message))reason='network transfer failed';\n    else if(/No space left on device/i.test(message))reason='disk full';\n    else if(/not our ref|couldn.t find remote ref|bad object/i.test(message))reason='requested commit unavailable';\n    throw new Error('Git '+args[0]+' failed: '+reason+'; credentials omitted');\n  }\n}\nfunction parseDiff(patch) {\n  const out={}; let path=null,old=null,now=null;\n  for(const line of patch.split('\\n')) {\n    if(line.startsWith('diff --git ')){path=null;old=null;now=null;}\n    else if(line.startsWith('--- ') && line.slice(4)!='/dev/null') path=line.slice(4).replace(/^a\\//,'');\n    else if(line.startsWith('+++ ')){if(line.slice(4)!='/dev/null')path=line.slice(4).replace(/^b\\//,'');if(path)out[path]??={LEFT:[],RIGHT:[],changed:[]};}\n    else if(line.startsWith('@@ ')){const m=line.match(/^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)(?:,\\d+)? @@/);if(m){old=+m[1];now=+m[2];out[path]??={LEFT:[],RIGHT:[],changed:[]};}}\n    else if(out[path] && old!==null){if(line.startsWith('-'))out[path].LEFT.push(old++);else if(line.startsWith('+')){out[path].RIGHT.push(now);out[path].changed.push(now++);}else if(line.startsWith(' ')){out[path].LEFT.push(old++);out[path].RIGHT.push(now++);}}\n  } return out;\n}\nconst lexical = s => s+'\\n'+s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replaceAll('_',' ');\nconst scope = (repo,head) => ({must:[{key:'repo',match:{value:repo}},{key:'head',match:{value:head}}]});\n\n// Bound the complete BGE WordPiece input by UTF-8 bytes, including metadata.\n// Leave 50 tokens of headroom for special tokens and query framing.\nconst DENSE_INPUT_BYTES = 450;\nfunction utf8Prefix(text, budget) {\n  let output='', bytes=0;\n  for(const character of text){const size=Buffer.byteLength(character,'utf8');if(bytes+size>budget)break;output+=character;bytes+=size;}\n  return output;\n}\n\nconst batch=$('Index chunk batches').item.json;\nconst dense=$('Generate document embeddings').item.json,sparse=$('Generate lexical document vectors').item.json;\nif(dense.vectors.length!==batch.chunks.length || sparse.vectors.length!==batch.chunks.length)throw new Error('Embedding count mismatch');\nreturn [{json:{points:batch.chunks.map((c,i)=>({id:c.id,vector:{dense:dense.vectors[i],bm25:sparse.vectors[i]},payload:c})),embedded:batch.chunks.length-dense.cached,reused:dense.cached}}];\n"
+        "mode": "raw",
+        "jsonOutput": "={{ JSON.stringify((()=>{const batch=$('Index chunk batches').item.json;\nconst dense=$('Generate document embeddings').item.json,sparse=$('Generate lexical document vectors').item.json;\nif(dense.vectors.length!==batch.chunks.length || sparse.vectors.length!==batch.chunks.length)throw new Error('Embedding count mismatch');\nreturn {points:batch.chunks.map((c,i)=>({id:c.id,vector:{dense:dense.vectors[i],bm25:sparse.vectors[i]},payload:c})),embedded:batch.chunks.length-dense.cached,reused:dense.cached};\n})()) }}",
+        "includeOtherFields": false,
+        "options": {}
       },
       "position": [
-        280,
+        0,
         1190
       ],
-      "id": "26cfa1a3-6391-4948-ab51-2a8ca19220db"
+      "id": "d73c0047-a40c-4327-a8e1-f9a640c18b01"
     },
     {
       "name": "Write chunks to Qdrant",
@@ -863,7 +945,7 @@
       },
       "position": [
         0,
-        1190
+        1430
       ],
       "credentials": {
         "httpHeaderAuth": {
@@ -871,7 +953,7 @@
           "name": "DiffMind Qdrant native"
         }
       },
-      "id": "d5d630a2-a856-4af4-b1c2-8f8420f817cf"
+      "id": "67246a4f-710c-4e96-b9c8-6d70cd49fab8"
     },
     {
       "name": "Record empty source batch",
@@ -881,10 +963,10 @@
         "jsCode": "return [{json:{status:'no eligible source'}}];"
       },
       "position": [
-        0,
+        840,
         1430
       ],
-      "id": "9a360bf5-781c-432c-aa41-6f513ce75197"
+      "id": "80605450-ea4d-49fc-ae9d-b5664c6b47c2"
     },
     {
       "name": "Check indexed revision count",
@@ -918,20 +1000,20 @@
           "name": "DiffMind Qdrant native"
         }
       },
-      "id": "0665a391-3491-4cfc-b3b3-4cd2b061cf61"
+      "id": "8841660f-79d4-4ebc-8ca3-b29736ac1599"
     },
     {
       "name": "Require complete index",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "parameters": {
-        "jsCode": "const expected=$('Chunk source with line ranges').first().json.total_chunks;if($json.result.count!==expected)throw new Error('Index count mismatch');return [{json:{indexed:expected}}];"
+        "jsCode": "// Bundled into the relevant n8n Code nodes; no remote review worker is called.\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst cp = require('child_process');\nconst sha = s => crypto.createHash('sha256').update(s).digest('hex');\nconst secretPattern = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\\b(?:ghp_|ghs_|github_pat_)[A-Za-z0-9_]{20,}|\\bsk-[A-Za-z0-9_-]{24,}/;\nfunction eligible(path, excludes=[]) {\n  if (!path || path.startsWith('/') || /[\\x00-\\x1f\"\\\\]/.test(path)) return false;\n  const parts=path.split('/'), name=parts.at(-1);\n  if(parts.some(p=>['..','.git','node_modules','vendor','dist','build','.next','.venv','coverage','__pycache__'].includes(p))) return false;\n  if(/^\\.env|\\.(pem|key|lock)$|-lock\\.json$|\\.min\\.js$/.test(name) || /^(credentials|secrets)\\./i.test(name)) return false;\n  if(!/\\.(py|ts|tsx|js|jsx|go|rs|java|cs|rb|php|c|cpp|h|md|sql|json|ya?ml|toml|graphql)$/.test(name)) return false;\n  return !excludes.some(g=>new RegExp('^'+g.split('*').map(p=>p.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('.*')+'$').test(path));\n}\nasync function git(path, args, options={}) {\n  const token=$('Review installation token').first().json.token;\n  const env={PATH:'/usr/local/bin:/usr/bin:/bin',HOME:'/home/node',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_CONFIG_COUNT:'3',\n    GIT_CONFIG_KEY_0:'http.https://github.com/.extraheader',GIT_CONFIG_VALUE_0:'Authorization: Basic '+Buffer.from('x-access-token:'+token).toString('base64'),\n    GIT_CONFIG_KEY_1:'core.hooksPath',GIT_CONFIG_VALUE_1:'/dev/null',GIT_CONFIG_KEY_2:'core.quotePath',GIT_CONFIG_VALUE_2:'false'};\n  try {\n    return await new Promise((resolve,reject)=>{\n      const child=cp.execFile('git',['--literal-pathspecs','-C',path,...args],\n        {env,timeout:120000,maxBuffer:60000000,encoding:options.binary?null:'utf8'},\n        (error,stdout,stderr)=>{if(error){error.stderr=stderr;reject(error);}else resolve(stdout);});\n      child.stdin.on('error',error=>{if(error.code!=='EPIPE')reject(error);});\n      child.stdin.end(options.input);\n    });\n  } catch(e){\n    // Never expose raw stderr, arguments, or environment: Git can echo credentials.\n    if(options.optional && !e.killed && [1,128].includes(e.code))return '';\n    const message=String(e.stderr||'');\n    let reason='exit '+(Number.isInteger(e.code)?e.code:'unavailable');\n    if(e.killed||e.code==='ETIMEDOUT')reason='timed out after 120 seconds';\n    else if(/(?:unable to create|already exists|another git process)[^\\n]*lock|shallow\\.lock/i.test(message))reason='repository lock contention';\n    else if(/Authentication failed|could not read Username|Repository not found|HTTP (?:401|403)/i.test(message))reason='repository access or authentication failed';\n    else if(/Could not resolve host|Failed to connect|Connection.*reset|RPC failed|timed out/i.test(message))reason='network transfer failed';\n    else if(/No space left on device/i.test(message))reason='disk full';\n    else if(/not our ref|couldn.t find remote ref|bad object/i.test(message))reason='requested commit unavailable';\n    throw new Error('Git '+args[0]+' failed: '+reason+'; credentials omitted');\n  }\n}\nfunction parseDiff(patch) {\n  const out={}; let path=null,old=null,now=null;\n  for(const line of patch.split('\\n')) {\n    if(line.startsWith('diff --git ')){path=null;old=null;now=null;}\n    else if(line.startsWith('--- ') && line.slice(4)!='/dev/null') path=line.slice(4).replace(/^a\\//,'');\n    else if(line.startsWith('+++ ')){if(line.slice(4)!='/dev/null')path=line.slice(4).replace(/^b\\//,'');if(path)out[path]??={LEFT:[],RIGHT:[],changed:[]};}\n    else if(line.startsWith('@@ ')){const m=line.match(/^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)(?:,\\d+)? @@/);if(m){old=+m[1];now=+m[2];out[path]??={LEFT:[],RIGHT:[],changed:[]};}}\n    else if(out[path] && old!==null){if(line.startsWith('-'))out[path].LEFT.push(old++);else if(line.startsWith('+')){out[path].RIGHT.push(now);out[path].changed.push(now++);}else if(line.startsWith(' ')){out[path].LEFT.push(old++);out[path].RIGHT.push(now++);}}\n  } return out;\n}\nconst lexical = s => s+'\\n'+s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replaceAll('_',' ');\nconst scope = (repo,head) => ({must:[{key:'repo',match:{value:repo}},{key:'head',match:{value:head}}]});\n\n// Bound the complete BGE WordPiece input by UTF-8 bytes, including metadata.\n// Leave 50 tokens of headroom for special tokens and query framing.\nconst DENSE_INPUT_BYTES = 450;\nfunction utf8Prefix(text, budget) {\n  let output='', bytes=0;\n  for(const character of text){const size=Buffer.byteLength(character,'utf8');if(bytes+size>budget)break;output+=character;bytes+=size;}\n  return output;\n}\n\nconst plan=$('Plan revision index reuse').first().json;\nif($json.result.count!==plan.expected)throw new Error('Index count mismatch');\n// Written only after Qdrant confirms every chunk. Partial runs never become hits.\nfs.mkdirSync(plan.directory,{recursive:true});\nconst temporary=plan.manifest_path+'.'+crypto.randomUUID()+'.tmp';\nfs.writeFileSync(temporary,JSON.stringify({fingerprint:plan.fingerprint,expected:plan.expected}),{mode:0o600});\nfs.renameSync(temporary,plan.manifest_path);\nconst reused=plan.manifest_matches && $('Check reusable revision index').first().json.result.count===plan.expected;\nreturn [{json:{indexed:plan.expected,reused_revision:reused,embedding_batches:reused?0:Math.ceil(plan.expected/128)}}];\n"
       },
       "position": [
         560,
         1430
       ],
-      "id": "f767ee93-b4fd-4974-acbd-225078e4c3f4"
+      "id": "c3f3c088-3b79-4e92-97bc-e54d0beb5a73"
     },
     {
       "name": "Build per-diff retrieval queries",
@@ -944,7 +1026,7 @@
         950,
         1450
       ],
-      "id": "a10b1956-c2ec-470f-af5c-1dea22f7e602"
+      "id": "94832c95-0a80-44e8-9950-681e9ebcbc7e"
     },
     {
       "name": "Review diff batches",
@@ -958,7 +1040,7 @@
         1200,
         950
       ],
-      "id": "9361a54c-e1a9-4cd9-b1b1-0383e52a7e8f"
+      "id": "e894813f-158a-457f-a763-ceaccffc9ad5"
     },
     {
       "name": "Embed semantic search query",
@@ -992,7 +1074,7 @@
           "name": "DiffMind local embeddings"
         }
       },
-      "id": "11fd1521-9f2d-451a-9a31-8a1cc62ae74d"
+      "id": "f6622ef6-965a-4c64-981b-68a985fac4e1"
     },
     {
       "name": "Embed lexical search query",
@@ -1026,7 +1108,7 @@
           "name": "DiffMind local embeddings"
         }
       },
-      "id": "04ad2639-2b72-4a63-a734-f686ab146e48"
+      "id": "190e205b-8553-4a1d-b8ae-043deabc32e3"
     },
     {
       "name": "Search semantic code context",
@@ -1060,7 +1142,7 @@
           "name": "DiffMind Qdrant native"
         }
       },
-      "id": "28d7e72f-15cf-4066-8d63-510171c2a333"
+      "id": "6b46d81a-d447-44a4-a74f-529ed521b71d"
     },
     {
       "name": "Search lexical code context",
@@ -1094,7 +1176,7 @@
           "name": "DiffMind Qdrant native"
         }
       },
-      "id": "a08c1973-8f3a-4e39-9260-ddb1e38ec33f"
+      "id": "060da934-68af-4bb3-b655-d91deb2cb235"
     },
     {
       "name": "Search exact symbols",
@@ -1128,7 +1210,7 @@
           "name": "DiffMind Qdrant native"
         }
       },
-      "id": "ee5b2c19-274f-4850-b4fc-7cf0143e3b3b"
+      "id": "4c3f777c-b386-49f8-9821-eb95fb803962"
     },
     {
       "name": "Fuse rankings and build evidence",
@@ -1141,7 +1223,7 @@
         1200,
         1430
       ],
-      "id": "89e9e8fc-dcf0-434e-8c70-f520009827f5"
+      "id": "b1371265-8e96-4852-940c-3f83c216bcb9"
     },
     {
       "name": "DeepSeek draft review",
@@ -1175,7 +1257,7 @@
           "name": "DeepSeek account"
         }
       },
-      "id": "ff8cf95c-fd52-483e-be1f-bb8056017885"
+      "id": "792d93ca-7c3e-4321-a7c1-4c45b1379f3f"
     },
     {
       "name": "Parse draft findings",
@@ -1188,7 +1270,7 @@
         1760,
         1430
       ],
-      "id": "234bade7-73d5-493f-ba30-a2a11fe9dea4"
+      "id": "c9898beb-ea56-4bd8-849a-39c7541da466"
     },
     {
       "name": "DeepSeek verify findings",
@@ -1222,7 +1304,7 @@
           "name": "DeepSeek account"
         }
       },
-      "id": "693ce263-48ef-4192-a225-1a246fc4f1b1"
+      "id": "27521b95-4264-49d2-aff4-3d097aa96e55"
     },
     {
       "name": "Validate diff lines and citations",
@@ -1235,20 +1317,20 @@
         1480,
         1670
       ],
-      "id": "fdc4fe3f-dd0e-4eb6-a978-1f5e666ce198"
+      "id": "69cc39cf-e286-40eb-9b89-1ee2ee7d8e2c"
     },
     {
       "name": "Collect verified review results",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "parameters": {
-        "jsCode": "// Bundled into the relevant n8n Code nodes; no remote review worker is called.\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst cp = require('child_process');\nconst sha = s => crypto.createHash('sha256').update(s).digest('hex');\nconst secretPattern = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\\b(?:ghp_|ghs_|github_pat_)[A-Za-z0-9_]{20,}|\\bsk-[A-Za-z0-9_-]{24,}/;\nfunction eligible(path, excludes=[]) {\n  if (!path || path.startsWith('/') || /[\\x00-\\x1f\"\\\\]/.test(path)) return false;\n  const parts=path.split('/'), name=parts.at(-1);\n  if(parts.some(p=>['..','.git','node_modules','vendor','dist','build','.next','.venv','coverage','__pycache__'].includes(p))) return false;\n  if(/^\\.env|\\.(pem|key|lock)$|-lock\\.json$|\\.min\\.js$/.test(name) || /^(credentials|secrets)\\./i.test(name)) return false;\n  if(!/\\.(py|ts|tsx|js|jsx|go|rs|java|cs|rb|php|c|cpp|h|md|sql|json|ya?ml|toml|graphql)$/.test(name)) return false;\n  return !excludes.some(g=>new RegExp('^'+g.split('*').map(p=>p.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('.*')+'$').test(path));\n}\nasync function git(path, args, options={}) {\n  const token=$('Review installation token').first().json.token;\n  const env={PATH:'/usr/local/bin:/usr/bin:/bin',HOME:'/home/node',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_CONFIG_COUNT:'3',\n    GIT_CONFIG_KEY_0:'http.https://github.com/.extraheader',GIT_CONFIG_VALUE_0:'Authorization: Basic '+Buffer.from('x-access-token:'+token).toString('base64'),\n    GIT_CONFIG_KEY_1:'core.hooksPath',GIT_CONFIG_VALUE_1:'/dev/null',GIT_CONFIG_KEY_2:'core.quotePath',GIT_CONFIG_VALUE_2:'false'};\n  try {\n    return await new Promise((resolve,reject)=>{\n      const child=cp.execFile('git',['--literal-pathspecs','-C',path,...args],\n        {env,timeout:120000,maxBuffer:60000000,encoding:options.binary?null:'utf8'},\n        (error,stdout,stderr)=>{if(error){error.stderr=stderr;reject(error);}else resolve(stdout);});\n      child.stdin.on('error',error=>{if(error.code!=='EPIPE')reject(error);});\n      child.stdin.end(options.input);\n    });\n  } catch(e){\n    // Never expose raw stderr, arguments, or environment: Git can echo credentials.\n    if(options.optional && !e.killed && [1,128].includes(e.code))return '';\n    const message=String(e.stderr||'');\n    let reason='exit '+(Number.isInteger(e.code)?e.code:'unavailable');\n    if(e.killed||e.code==='ETIMEDOUT')reason='timed out after 120 seconds';\n    else if(/(?:unable to create|already exists|another git process)[^\\n]*lock|shallow\\.lock/i.test(message))reason='repository lock contention';\n    else if(/Authentication failed|could not read Username|Repository not found|HTTP (?:401|403)/i.test(message))reason='repository access or authentication failed';\n    else if(/Could not resolve host|Failed to connect|Connection.*reset|RPC failed|timed out/i.test(message))reason='network transfer failed';\n    else if(/No space left on device/i.test(message))reason='disk full';\n    else if(/not our ref|couldn.t find remote ref|bad object/i.test(message))reason='requested commit unavailable';\n    throw new Error('Git '+args[0]+' failed: '+reason+'; credentials omitted');\n  }\n}\nfunction parseDiff(patch) {\n  const out={}; let path=null,old=null,now=null;\n  for(const line of patch.split('\\n')) {\n    if(line.startsWith('diff --git ')){path=null;old=null;now=null;}\n    else if(line.startsWith('--- ') && line.slice(4)!='/dev/null') path=line.slice(4).replace(/^a\\//,'');\n    else if(line.startsWith('+++ ')){if(line.slice(4)!='/dev/null')path=line.slice(4).replace(/^b\\//,'');if(path)out[path]??={LEFT:[],RIGHT:[],changed:[]};}\n    else if(line.startsWith('@@ ')){const m=line.match(/^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)(?:,\\d+)? @@/);if(m){old=+m[1];now=+m[2];out[path]??={LEFT:[],RIGHT:[],changed:[]};}}\n    else if(out[path] && old!==null){if(line.startsWith('-'))out[path].LEFT.push(old++);else if(line.startsWith('+')){out[path].RIGHT.push(now);out[path].changed.push(now++);}else if(line.startsWith(' ')){out[path].LEFT.push(old++);out[path].RIGHT.push(now++);}}\n  } return out;\n}\nconst lexical = s => s+'\\n'+s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replaceAll('_',' ');\nconst scope = (repo,head) => ({must:[{key:'repo',match:{value:repo}},{key:'head',match:{value:head}}]});\n\n// Bound the complete BGE WordPiece input by UTF-8 bytes, including metadata.\n// Leave 50 tokens of headroom for special tokens and query framing.\nconst DENSE_INPUT_BYTES = 450;\nfunction utf8Prefix(text, budget) {\n  let output='', bytes=0;\n  for(const character of text){const size=Buffer.byteLength(character,'utf8');if(bytes+size>budget)break;output+=character;bytes+=size;}\n  return output;\n}\n\nconst rows=$input.all().map(i=>i.json),ctx=$('Prepare review context').first().json,g=$('Fetch pinned Git commits').first().json;\nconst chunks=$('Chunk source with line ranges').first().json;\nconst findings=[...new Map(rows.flatMap(r=>r.findings||[]).map(f=>[f.fingerprint,f])).values()].slice(0,5);\nreturn [{json:{head:ctx.job.head,summary:rows.map(r=>r.summary).join('\\n\\n'),findings,incremental:g.incremental,\n traces:rows.map(r=>r.trace),usage:rows.flatMap(r=>r.usage||[]),skipped:[...chunks.skipped,...$('Parse full and incremental diffs').first().json.skipped],chunks:chunks.total_chunks}}];\n"
+        "jsCode": "// Bundled into the relevant n8n Code nodes; no remote review worker is called.\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst cp = require('child_process');\nconst sha = s => crypto.createHash('sha256').update(s).digest('hex');\nconst secretPattern = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\\b(?:ghp_|ghs_|github_pat_)[A-Za-z0-9_]{20,}|\\bsk-[A-Za-z0-9_-]{24,}/;\nfunction eligible(path, excludes=[]) {\n  if (!path || path.startsWith('/') || /[\\x00-\\x1f\"\\\\]/.test(path)) return false;\n  const parts=path.split('/'), name=parts.at(-1);\n  if(parts.some(p=>['..','.git','node_modules','vendor','dist','build','.next','.venv','coverage','__pycache__'].includes(p))) return false;\n  if(/^\\.env|\\.(pem|key|lock)$|-lock\\.json$|\\.min\\.js$/.test(name) || /^(credentials|secrets)\\./i.test(name)) return false;\n  if(!/\\.(py|ts|tsx|js|jsx|go|rs|java|cs|rb|php|c|cpp|h|md|sql|json|ya?ml|toml|graphql)$/.test(name)) return false;\n  return !excludes.some(g=>new RegExp('^'+g.split('*').map(p=>p.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('.*')+'$').test(path));\n}\nasync function git(path, args, options={}) {\n  const token=$('Review installation token').first().json.token;\n  const env={PATH:'/usr/local/bin:/usr/bin:/bin',HOME:'/home/node',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null',GIT_CONFIG_COUNT:'3',\n    GIT_CONFIG_KEY_0:'http.https://github.com/.extraheader',GIT_CONFIG_VALUE_0:'Authorization: Basic '+Buffer.from('x-access-token:'+token).toString('base64'),\n    GIT_CONFIG_KEY_1:'core.hooksPath',GIT_CONFIG_VALUE_1:'/dev/null',GIT_CONFIG_KEY_2:'core.quotePath',GIT_CONFIG_VALUE_2:'false'};\n  try {\n    return await new Promise((resolve,reject)=>{\n      const child=cp.execFile('git',['--literal-pathspecs','-C',path,...args],\n        {env,timeout:120000,maxBuffer:60000000,encoding:options.binary?null:'utf8'},\n        (error,stdout,stderr)=>{if(error){error.stderr=stderr;reject(error);}else resolve(stdout);});\n      child.stdin.on('error',error=>{if(error.code!=='EPIPE')reject(error);});\n      child.stdin.end(options.input);\n    });\n  } catch(e){\n    // Never expose raw stderr, arguments, or environment: Git can echo credentials.\n    if(options.optional && !e.killed && [1,128].includes(e.code))return '';\n    const message=String(e.stderr||'');\n    let reason='exit '+(Number.isInteger(e.code)?e.code:'unavailable');\n    if(e.killed||e.code==='ETIMEDOUT')reason='timed out after 120 seconds';\n    else if(/(?:unable to create|already exists|another git process)[^\\n]*lock|shallow\\.lock/i.test(message))reason='repository lock contention';\n    else if(/Authentication failed|could not read Username|Repository not found|HTTP (?:401|403)/i.test(message))reason='repository access or authentication failed';\n    else if(/Could not resolve host|Failed to connect|Connection.*reset|RPC failed|timed out/i.test(message))reason='network transfer failed';\n    else if(/No space left on device/i.test(message))reason='disk full';\n    else if(/not our ref|couldn.t find remote ref|bad object/i.test(message))reason='requested commit unavailable';\n    throw new Error('Git '+args[0]+' failed: '+reason+'; credentials omitted');\n  }\n}\nfunction parseDiff(patch) {\n  const out={}; let path=null,old=null,now=null;\n  for(const line of patch.split('\\n')) {\n    if(line.startsWith('diff --git ')){path=null;old=null;now=null;}\n    else if(line.startsWith('--- ') && line.slice(4)!='/dev/null') path=line.slice(4).replace(/^a\\//,'');\n    else if(line.startsWith('+++ ')){if(line.slice(4)!='/dev/null')path=line.slice(4).replace(/^b\\//,'');if(path)out[path]??={LEFT:[],RIGHT:[],changed:[]};}\n    else if(line.startsWith('@@ ')){const m=line.match(/^@@ -(\\d+)(?:,\\d+)? \\+(\\d+)(?:,\\d+)? @@/);if(m){old=+m[1];now=+m[2];out[path]??={LEFT:[],RIGHT:[],changed:[]};}}\n    else if(out[path] && old!==null){if(line.startsWith('-'))out[path].LEFT.push(old++);else if(line.startsWith('+')){out[path].RIGHT.push(now);out[path].changed.push(now++);}else if(line.startsWith(' ')){out[path].LEFT.push(old++);out[path].RIGHT.push(now++);}}\n  } return out;\n}\nconst lexical = s => s+'\\n'+s.replace(/([a-z0-9])([A-Z])/g,'$1 $2').replaceAll('_',' ');\nconst scope = (repo,head) => ({must:[{key:'repo',match:{value:repo}},{key:'head',match:{value:head}}]});\n\n// Bound the complete BGE WordPiece input by UTF-8 bytes, including metadata.\n// Leave 50 tokens of headroom for special tokens and query framing.\nconst DENSE_INPUT_BYTES = 450;\nfunction utf8Prefix(text, budget) {\n  let output='', bytes=0;\n  for(const character of text){const size=Buffer.byteLength(character,'utf8');if(bytes+size>budget)break;output+=character;bytes+=size;}\n  return output;\n}\n\nconst rows=$input.all().map(i=>i.json),ctx=$('Prepare review context').first().json,g=$('Fetch pinned Git commits').first().json;\nconst chunks=$('Chunk source with line ranges').first().json;\nconst findings=[...new Map(rows.flatMap(r=>r.findings||[]).map(f=>[f.fingerprint,f])).values()].slice(0,5);\nreturn [{json:{head:ctx.job.head,summary:rows.map(r=>r.summary).join('\\n\\n'),findings,incremental:g.incremental,\n traces:rows.map(r=>r.trace),usage:rows.flatMap(r=>r.usage||[]),skipped:[...chunks.skipped,...$('Parse full and incremental diffs').first().json.skipped],chunks:chunks.total_chunks,index:$('Require complete index').first().json}}];\n"
       },
       "position": [
         2400,
         950
       ],
-      "id": "ef2c414e-5e3b-4d2a-a3a1-26ec5a6b6d7b"
+      "id": "5d4d72cf-5027-432b-b742-da555ce9426a"
     },
     {
       "name": "Persist publication intent",
@@ -1271,7 +1353,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "9b217782-3bcb-4d0a-9239-5f9f5de670cd"
+      "id": "2a945ec4-ba48-448a-bb89-25c5b1b321a8"
     },
     {
       "name": "Load saved publication intent",
@@ -1294,7 +1376,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "0d5b9f24-6bb5-4d9c-b0e2-9daf57209acd"
+      "id": "63b9136d-5f63-457a-9b27-5ee144488cdb"
     },
     {
       "name": "Fetch existing PR reviews",
@@ -1356,7 +1438,7 @@
       "maxTries": 3,
       "waitBetweenTries": 1000,
       "executeOnce": true,
-      "id": "3bf2f4bb-7512-40b2-b65f-fb06db6a4b26"
+      "id": "b7b68c33-973c-4f8a-b372-d486ee08c136"
     },
     {
       "name": "Fetch existing inline comments",
@@ -1418,7 +1500,7 @@
       "maxTries": 3,
       "waitBetweenTries": 1000,
       "executeOnce": true,
-      "id": "4c0ecaee-a90f-4415-9b2b-c2d0de7ab990"
+      "id": "68d42301-5c3b-46bb-b1e9-21e2bdf03040"
     },
     {
       "name": "Fetch existing summary comments",
@@ -1480,7 +1562,7 @@
       "maxTries": 3,
       "waitBetweenTries": 1000,
       "executeOnce": true,
-      "id": "c65350ae-5156-47b4-bb0b-9ed015240265"
+      "id": "b09c587d-ba1d-4907-a5a0-8e4a222387f4"
     },
     {
       "name": "Reconcile existing bot comments",
@@ -1493,7 +1575,7 @@
         280,
         2140
       ],
-      "id": "849fe366-9149-4f17-83b7-1914aa59327c"
+      "id": "1ea96ed5-7506-4f8f-8532-8e2b2965216a"
     },
     {
       "name": "Recheck head before publication",
@@ -1536,7 +1618,7 @@
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 1000,
-      "id": "efabef3c-8d15-4b03-a11b-92c27cd14171"
+      "id": "8cdb4ab6-a3b0-4872-80ae-1039cda45ec9"
     },
     {
       "name": "Check active publication lease",
@@ -1559,7 +1641,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "33211759-1985-451b-880a-7c751c734119"
+      "id": "1d65f03a-bbf1-4ed0-9453-a253bead04a1"
     },
     {
       "name": "Publish only current leased head",
@@ -1591,7 +1673,7 @@
         280,
         2380
       ],
-      "id": "5a7fb279-c44a-4894-936b-b72482f11f06"
+      "id": "58a90d40-051a-4f84-a5c0-91d89658cd71"
     },
     {
       "name": "Has new inline findings",
@@ -1623,7 +1705,7 @@
         1200,
         1900
       ],
-      "id": "7d95b034-167f-4059-81ad-33feb82c5b2f"
+      "id": "27d90b3b-07cf-44e9-9424-cd9b0edad128"
     },
     {
       "name": "Publish inline GitHub review",
@@ -1666,7 +1748,7 @@
         1480,
         1900
       ],
-      "id": "7485386d-9be6-4a57-bda5-8a811cf23e45"
+      "id": "61eb0603-2c65-465e-b9fe-ec5997dd6382"
     },
     {
       "name": "Recheck head before summary",
@@ -1709,7 +1791,7 @@
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 1000,
-      "id": "e240925e-6f76-4a56-ae1b-80745287e975"
+      "id": "619827a7-dc05-4dbb-838a-4da55d477d00"
     },
     {
       "name": "Summary head still current",
@@ -1741,7 +1823,7 @@
         1760,
         2140
       ],
-      "id": "c9b7dced-dfc4-429f-8cf4-8e5344f52757"
+      "id": "bfc72a13-8042-4dd9-bab6-392bd6b9ce62"
     },
     {
       "name": "Create or update PR summary",
@@ -1780,7 +1862,7 @@
         2400,
         1900
       ],
-      "id": "060915f2-3df3-4a1e-a6d6-9d80a496f887"
+      "id": "0683ce6a-584e-4892-a6f1-c77187024546"
     },
     {
       "name": "Select three recent revision indexes",
@@ -1803,7 +1885,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "69c52892-18ff-43c6-9912-88350dfe8d5d"
+      "id": "005eee68-ffb9-4e38-a9a8-ac1bcb74d7e8"
     },
     {
       "name": "Prune older Qdrant revisions",
@@ -1837,7 +1919,7 @@
           "name": "DiffMind Qdrant native"
         }
       },
-      "id": "99af1dd3-fc47-4f71-ae6c-0a2644631392"
+      "id": "cf5f621b-fa99-4138-8a4e-4084a997eec2"
     },
     {
       "name": "Save published head and findings",
@@ -1860,7 +1942,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "f4427098-0d5a-4922-8125-5a2634c3cb32"
+      "id": "4227ef25-9861-45c0-ab2b-e5b9c5894dc5"
     },
     {
       "name": "Review execution failed",
@@ -1871,7 +1953,7 @@
         -350,
         2850
       ],
-      "id": "385526eb-e3e1-4f72-956c-316ce7740b3e"
+      "id": "15cff0ff-6358-4a0a-a35f-c7e0cce4f875"
     },
     {
       "name": "Prepare safe retry metadata",
@@ -1884,7 +1966,7 @@
         0,
         2850
       ],
-      "id": "f195624c-5bfd-49d1-8a94-c6c30695b14b"
+      "id": "14258ccc-3441-4400-9987-f0511d964f59"
     },
     {
       "name": "Retry failed job up to three times",
@@ -1907,7 +1989,7 @@
           "name": "DiffMind review database"
         }
       },
-      "id": "2e8f3fab-6256-423e-94d3-3a2e2ec01c73"
+      "id": "fb8a4fa6-a0f9-413c-a448-c06ac5f754e2"
     }
   ],
   "connections": {
@@ -2207,6 +2289,46 @@
       "main": [
         [
           {
+            "node": "Plan revision index reuse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan revision index reuse": {
+      "main": [
+        [
+          {
+            "node": "Check reusable revision index",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check reusable revision index": {
+      "main": [
+        [
+          {
+            "node": "Revision index is complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revision index is complete": {
+      "main": [
+        [
+          {
+            "node": "Require complete index",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Clear incomplete revision index",
             "type": "main",
             "index": 0
@@ -2287,14 +2409,14 @@
       "main": [
         [
           {
-            "node": "Attach vectors to source chunks",
+            "node": "Map vectors to source chunks",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Attach vectors to source chunks": {
+    "Map vectors to source chunks": {
       "main": [
         [
           {
@@ -2758,9 +2880,7 @@
         "Read trusted repository rules",
         "Parse full and incremental diffs",
         "Read tracked source blobs",
-        "Chunk source with line ranges",
-        "Clear incomplete revision index",
-        "Load prepared chunk batches"
+        "Chunk source with line ranges"
       ],
       "description": "Fetch immutable Git commits, parse diffs, read trusted rules and chunk tracked source files."
     },
@@ -2768,17 +2888,22 @@
       "id": "368d0a03-b11d-4b72-ae9d-cc3e612c87ea",
       "name": "Index repository chunks",
       "nodeNames": [
+        "Plan revision index reuse",
+        "Check reusable revision index",
+        "Revision index is complete",
+        "Clear incomplete revision index",
+        "Load prepared chunk batches",
         "Index chunk batches",
         "Batch contains source chunks",
         "Generate document embeddings",
         "Generate lexical document vectors",
-        "Attach vectors to source chunks",
+        "Map vectors to source chunks",
         "Write chunks to Qdrant",
         "Record empty source batch",
         "Check indexed revision count",
         "Require complete index"
       ],
-      "description": "Batch local dense and BM25 embeddings, upsert Qdrant points and verify index completeness."
+      "description": "Reuse a verified revision index; otherwise batch embeddings, map vectors with native fields and verify Qdrant counts."
     },
     {
       "id": "72199eff-6863-4d88-8d26-da7cae410992",

@@ -45,7 +45,7 @@ Qdrant 21.6 MiB and inference 292.8 MiB; these are not peak measurements.
 
 ## Local verification
 
-October 29: six Python unit/sample tests and twelve Node workflow tests passed; Ruff
+October 29: seven Python unit/sample tests and fourteen Node workflow tests passed; Ruff
 passed. Tests cover inference authentication, batching/cache, oversized token input,
 diff positions, source exclusions, chunk ranges, per-file retrieval evidence, citation
 validation and compilation of every exported Code node and expression.
@@ -96,6 +96,52 @@ The real PostgreSQL queue test passed during the prior setup. It was not rerun o
 October 29 because local Docker is stopped. Its connection now has a five-second
 timeout. One upstream Starlette/httpx deprecation warning remains.
 
-These fixtures establish small-repository behavior, not large-repository performance
-or full CodeRabbit parity. Large-repository latency, peak memory, automatic thread
-resolution and conversational review replies are not validated or implemented.
+These fixtures do not establish full CodeRabbit parity. Automatic thread resolution
+and conversational review replies are not implemented. The indexing measurements
+below add one large-repository workload; they are not a general throughput guarantee.
+
+## Indexing performance repair (October 29, 2026)
+
+Profiling execution 2138 showed that 956.1 seconds of its 1083.8-second runtime were
+spent in `Attach vectors to source chunks`, across 384 iterations. Dense document
+embeddings took 36.3 seconds with 9,065 reused inputs and 141 new ones. The mapping
+node was replaced with native Edit Fields, preserving vector-count validation and
+visible source-to-vector mapping. No review worker was introduced.
+
+The transport batch grew from 24 to 128 inputs; inference still uses 24-text CPU
+batches in document and query modes. Regression tests cover the accepted 128-input
+boundary, rejected 129-input requests, cache reuse, matching vector order, count
+mismatches, and index manifests that cannot be accepted solely on a point count.
+
+The inactive benchmark workflow uses a separate Qdrant collection, selects its job
+read-only, and ends before any publication or queue mutation. It used the saved
+9,206-chunk commit from the same large front-end repository. The PR merged during
+testing; subsequent benchmark runs explicitly used its archived snapshot without
+publishing. Production open/head/lease checks were not changed.
+
+| Execution | Scenario | Duration | Observation |
+| --- | --- | --- | --- |
+| 2205 | Native field mapping, 32-input transport, warm embeddings | 4m15.6s | Mapping took 2.262s across 288 iterations; all 9,206 chunks indexed |
+| 2218 | 128-input transport, warm embeddings, full snapshot rebuild | 3m22.0s | 72 embedding batches, all 9,206 dense and lexical inputs cached; two review batches completed |
+| 2223 | Same revision reused | 40.0s | Exact count verified; zero document-embedding batches; both review batches completed |
+| 2325 | Production `/diffmind full-review` on test PR 3 | 11.6s | 50 chunks, one embedding batch, summary published and job completed |
+| 2558 | Production repeat command on the same test head | 10.4s | 50 chunks reused, zero document-embedding batches, summary updated |
+
+An older production review was consuming resources during the large rebuild tests
+and part of run 2223. It belonged to the now-merged PR and was canceled (execution
+2198); its exact queue job was marked superseded so it would not retry. Execution
+2215 ended at the closed-PR guard and is deliberately excluded from performance
+claims. A stale test-job retry also ended correctly at the head guard (2322).
+
+Production version `26b15f9f-1f9d-42f3-bc54-e33cba15beb1` is published on the original
+workflow with 75 nodes and 10 groups. The temporary inference container was removed;
+the original 1 GiB/two-CPU service now accepts the larger transport batch. Its real
+dense/sparse document/query requests passed after deployment. The test PR retained
+the same three bot inline findings and the same summary comment ID, confirming no
+duplicate publication during the two new command tests.
+
+The service cache avoids recomputing unchanged embeddings. New heads still write a
+complete revision snapshot; file-level incremental Qdrant writes and larger
+tokenizer-aware chunks are not part of this patch. First-time CPU embedding latency
+remains. Full rebuild execution histories still retain vectors for inspection and
+can be large; repeat-review index reuse avoids those vector histories.

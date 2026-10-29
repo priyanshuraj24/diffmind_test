@@ -31,5 +31,6 @@ for(const file of source.files){
  flush();
 }
 if(chunks.length>30000)throw new Error('Index exceeds 30000 chunk budget; configure exclusions');
-const groups=[];for(let i=0;i<chunks.length;i+=24)groups.push({json:{chunks:chunks.slice(i,i+24),total_chunks:chunks.length,skipped}});
+// Amortize n8n/HTTP overhead; the service still infers in batches of 24 on CPU.
+const groups=[];for(let i=0;i<chunks.length;i+=128)groups.push({json:{chunks:chunks.slice(i,i+128),total_chunks:chunks.length,skipped}});
 return groups.length?groups:[{json:{chunks:[],total_chunks:0,skipped}}];

@@ -25,7 +25,8 @@ def auth(authorization: str = Header(default='')):
 
 
 class Input(BaseModel):
-    input: list[str] = Field(min_length=1, max_length=32)
+    # Transport batching is separate from inference's bounded 24-text CPU batch.
+    input: list[str] = Field(min_length=1, max_length=128)
     query: bool = False
 
 
@@ -61,7 +62,7 @@ def encode(body, kind):
                     missing.append((index, key, text))
             if missing:
                 texts = [text for _, _, text in missing]
-                vectors = model.query_embed(texts) if body.query else model.embed(texts, batch_size=24)
+                vectors = model.query_embed(texts, batch_size=24) if body.query else model.embed(texts, batch_size=24)
                 for (index, key, _), vector in zip(missing, vectors, strict=True):
                     vector = vector.tolist() if kind == 'dense' else {'indices': vector.indices.tolist(), 'values': vector.values.tolist()}
                     db.execute('INSERT OR REPLACE INTO vectors VALUES(?,?)', (key, json.dumps(vector)))

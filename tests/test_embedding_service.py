@@ -21,11 +21,12 @@ def service(tmp_path, monkeypatch):
         calls = 0
 
         def embed(self, texts, batch_size=24):
+            assert batch_size == 24
             self.calls += 1
             return iter(np.ones(384, dtype=np.float32) for _ in texts)
 
-        def query_embed(self, texts):
-            return self.embed(texts)
+        def query_embed(self, texts, batch_size=24):
+            return self.embed(texts, batch_size=batch_size)
 
     fake = Dense()
     monkeypatch.setattr(module, 'models', {'dense': fake})
@@ -56,3 +57,19 @@ def test_oversized_token_sequences_are_not_silently_truncated(service):
                            json={'input': ['word '*501]})
     assert response.status_code == 422
     assert model.calls == 0
+
+
+def test_transport_batch_is_bounded_independently_of_inference(service):
+    client, model = service
+    headers = {'Authorization': 'Bearer test-only'}
+    inputs = ['word ' * (i + 1) for i in range(128)]
+    first = client.post('/dense', headers=headers, json={'input': inputs})
+    assert first.status_code == 200
+    assert len(first.json()['vectors']) == 128
+    assert model.calls == 1
+    second = client.post('/dense', headers=headers, json={'input': inputs})
+    assert second.json()['cached'] == 128
+    assert model.calls == 1
+    rejected = client.post('/dense', headers=headers, json={'input': inputs + ['word']})
+    assert rejected.status_code == 422
+    assert model.calls == 1
