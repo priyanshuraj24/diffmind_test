@@ -79,6 +79,19 @@ binary output are preserved, and failure diagnostics do not expose credentials.
 Pinned fetches now retain per-PR head/base refs so subsequent fetches can negotiate
 using the existing cache. A regression test checks those exact refspecs.
 
+All three affected open front-end PRs were retried and completed successfully:
+
+| Execution | Indexed chunks | Review batches | New findings | Skipped review files | Duration |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 2106 | 9,203 | 1 | 0 | 0 | 28m32s |
+| 2138 | 9,206 | 2 | 0 | 0 | 18m04s |
+| 2158 | 9,192 | 1 | 0 | 0 | 17m45s |
+
+These are real workload observations. Full revision indexing remains costly even
+with content-cached embeddings; the fixes establish correctness, not low review
+latency. Historical failed executions remain in n8n for audit. Failed jobs belonging
+to closed PRs were not retried. New commit deliveries continued queuing normally.
+
 The real PostgreSQL queue test passed during the prior setup. It was not rerun on
 October 29 because local Docker is stopped. Its connection now has a five-second
 timeout. One upstream Starlette/httpx deprecation warning remains.
