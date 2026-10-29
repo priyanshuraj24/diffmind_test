@@ -1,0 +1,22 @@
+const raw=await this.helpers.getBinaryDataBuffer(0,'data');
+if(raw.length>2000000)throw new Error('GitHub payload exceeds 2MB');
+const h=$input.first().json.headers;
+const key=fs.readFileSync('/home/node/.n8n-files/diffmind-webhook-secret','utf8').trim();
+const expected='sha256='+crypto.createHmac('sha256',key).update(raw).digest('hex');
+const actual=h['x-hub-signature-256']||'';
+if(actual.length!==expected.length || !crypto.timingSafeEqual(Buffer.from(actual),Buffer.from(expected))) throw new Error('Invalid GitHub signature');
+const b=JSON.parse(raw.toString('utf8')), event=h['x-github-event'];
+if(event==='ping')return [{json:{ping:true}}];
+const repo=b.repository?.full_name;
+if(!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo||'') || repo.split('/').includes('..'))throw new Error('Invalid repository');
+const config=JSON.parse(fs.readFileSync('/home/node/.n8n-files/diffmind-native-config.json','utf8'));
+if(config.allowed_repos!=='*' && !config.allowed_repos.includes(repo))return [];
+let number,command=null;
+if(event==='pull_request' && ['opened','reopened','synchronize','ready_for_review'].includes(b.action) && !b.pull_request.draft)number=b.number;
+else if(['issue_comment','pull_request_review_comment'].includes(event) && b.action==='created' && (b.issue?.pull_request||b.pull_request) && b.comment?.user?.type!=='Bot'){
+ command=b.comment.body.trim().toLowerCase();
+ if(!['/diffmind review','/diffmind full-review','/diffmind pause','/diffmind resume'].includes(command))return [];
+ number=b.issue?.number || b.pull_request.number;
+} else return [];
+if(!h['x-github-delivery'] || !Number.isInteger(number))throw new Error('Missing delivery or PR number');
+return [{json:{repo,number,command,actor:b.comment?.user?.login||'',delivery:h['x-github-delivery'],action:b.action,event}}];

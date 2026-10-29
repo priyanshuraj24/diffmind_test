@@ -1,80 +1,109 @@
-# Deployment and operations
+# Deploy and operate the n8n review flow
 
-The stack assumes an existing PostgreSQL server and an external Docker network
-shared with n8n. It adds `diffmind-worker` and `diffmind-qdrant`; neither has a host
-port. The optional Traefik labels expose only `/diffmind/`, never `/internal/`.
+All review decisions run inside n8n. The supporting containers serve embeddings and
+Qdrant only. An existing PostgreSQL server stores the durable review queue.
 
-1. Create a dedicated PostgreSQL role/database owned by that role. Do not reuse
-   n8n's database credentials. Back up the database and persistent data directory.
-2. Copy `.env.example` to `.env`, restrict permissions to the service operator,
-   and populate unique webhook/internal secrets, DeepSeek key, GitHub App ID,
-   read-only private-key host path, repository allowlist and database URL.
-3. Create `data/worker` owned by UID 1000 and `data/qdrant` with appropriate access.
-   Keep the deployment directory private. Run `docker compose -p diffmind up -d --build`.
-4. Create an n8n HTTP Header Auth credential named `DiffMind worker internal API`:
-   header `Authorization`, value `Bearer <DIFFMIND_INTERNAL_TOKEN>`. Replace
-   `SET_WORKER_CREDENTIAL_ID` in `n8n-coordinator.ts` with its ID.
-5. Build/validate the two supplied SDK workflows with n8n's Workflow SDK tools.
-   Publish ingress and coordinator. The coordinator polls once per minute and
-   calls `/internal/run-once`. Keep `DIFFMIND_WORKER_ENABLED=false` in this mode.
-   For standalone operation set it true and disable the n8n coordinator.
-6. Install the GitHub App on the allowlisted repositories with Contents: read,
-   Pull requests: read/write, Issues: read/write, and Metadata: read permissions.
-   Create a repository webhook at `https://<n8n-host>/webhook/diffmind-v2`, JSON,
-   events `pull_request` and `issue_comment`, using `DIFFMIND_WEBHOOK_SECRET`.
-   The App installation is resolved from the repository if the event omits it.
-7. Verify a ping, then a synthetic opened PR and synchronize event. Enable
-   `DIFFMIND_PUBLISH=true` only for repositories intended to receive comments.
+## Prerequisites and secrets
 
-The ingress preserves the binary request body and GitHub signature. It responds
-only after the worker validates HMAC-SHA256 and persists the event. n8n execution
-data contains webhook metadata and review results; configure n8n execution pruning
-and access control according to your organization's retention policy.
+Use a trusted self-hosted n8n installation with Git available to Code nodes, the
+`crypto`, `fs` and `child_process` built-in modules enabled, the `jsonwebtoken` external module available, and a writable persistent
+`/home/node/.n8n-files` mount. The tested instance uses n8n 2.44.6. Git uses bare
+repositories and argument arrays; repository hooks and repository code are never run.
 
-## Inspect
+Create a dedicated PostgreSQL role/database and apply `n8n/sql/schema.sql` there.
+Do not reuse n8n's own database. Create these credentials in n8n and map the export:
+
+| Reference | Type and value |
+| --- | --- |
+| diffmindNativePG | PostgreSQL connection to the review database |
+| diffmindQdrantNative | HTTP Header Auth: `api-key`, private Qdrant API key |
+| diffmindEmbeddingNative | HTTP Header Auth: `Authorization`, `Bearer <embedding token>` |
+| mVyte7t4PdF9TQ8w | DeepSeek API credential |
+
+Store these private files in n8n's persistent mount with operator-only access:
+
+- `github.pem`: GitHub App private key.
+- `diffmind-webhook-secret`: GitHub App webhook signing secret.
+- `diffmind-native-config.json`: `{"app_id":1593885,"bot_login":"diffmind[bot]","allowed_repos":["owner/repository"]}`.
+
+Start with an explicit allowlist. `allowed_repos: "*"` permits repositories accessible
+to the App's installations. The current rollout uses this setting as authorized.
+
+## Supporting services
+
+Copy `.env.example` to a private `.env`; generate distinct embedding and Qdrant
+secrets. Set the external Docker network shared with n8n. Create `data/worker`
+writable by UID 1000 and persistent `data/qdrant` storage, then run:
 
 ```sh
-docker logs --tail 50 diffmind-worker
-docker stats --no-stream diffmind-worker diffmind-qdrant
-docker exec -i diffmind-worker python - <<'PY'
-import json
-from diffmind.config import Settings
-from diffmind.store import Store
-s = Settings()
-db = Store(s.database_url.get_secret_value())
-with db.connection() as c:
-    rows = c.execute('SELECT id,repo,number,status,attempts,error FROM dm_jobs ORDER BY created_at DESC LIMIT 20').fetchall()
-print(json.dumps(rows, default=str))
-PY
+docker compose -p diffmind -f compose.yaml up -d
+docker compose -p diffmind-model -f compose.native.yaml up -d --build
 ```
 
-Detailed traces in `dm_jobs.result` record the exact head, index coverage, selected
-evidence, candidate counts for each channel, model token usage and rejected
-findings. `/internal/jobs` provides the last twenty results with internal bearer
-authentication. Never expose this endpoint or the database publicly.
+On homescale the installed executable is `docker-compose`. No host ports are exposed.
+n8n calls `http://diffmind-embeddings:8000` and `http://diffmind-qdrant:6333`.
+The embedding container receives only its inference token. Its health endpoint checks
+process availability; a real dense/sparse request is needed to verify loaded models.
 
-Transient jobs retry up to three times with a one-minute delay. Publication
-intents are persisted before GitHub writes; retries reconcile review/finding
-markers belonging to the App. Manual commands enqueue new runs. Queued work for
-older heads is superseded; in-flight work checks the current head before writes.
-Comments remain bound to their reviewed commit if the head changes during the
-network call. A later review handles the new head.
+Create Qdrant collection `diffmind_n8n_v3` with this PUT body at
+`/collections/diffmind_n8n_v3`, using the private `api-key` header:
 
-## Capacity and recovery
+```json
+{"vectors":{"dense":{"size":384,"distance":"Cosine","on_disk":true}},"sparse_vectors":{"bm25":{"modifier":"idf"}}}
+```
 
-CPU embeddings use two threads and persist a content-addressed SQLite cache.
-Qdrant dense vectors and payloads are on disk. A first index costs more than later
-commits. Source budget defaults to 50 MB / 20,000 files / 100,000 chunks; files
-over 250 KB and batch diffs over 40,000 characters are skipped visibly. Set budgets
-lower for busier shared hosts. Track disk usage of both data directories and bare
-Git repositories. Job history and caches currently require operator retention.
+Add keyword payload indexes for `repo`, `head` and `symbol` using PUT
+`/collections/diffmind_n8n_v3/index` and `{"field_name":"repo","field_schema":"keyword"}`
+(repeat for the other two fields). Back up PostgreSQL and Qdrant before upgrades.
 
-For upgrades, wait for the running job to finish, back up data, then rebuild the
-worker. On interruption the job is reclaimable after its lease expires. Do not
-run multiple deployments against the same Qdrant collection with different
-embedding models; use a new collection when changing models or chunk schema.
+## Workflow and GitHub routing
 
-Rollback: disable the repository webhook and the v2 coordinator, then stop the
-worker. Keep PostgreSQL/Qdrant data and private settings. Re-enable the previous
-workflow/webhook if it was cut over. Never run both reviewers against the same PR
-unless duplicate comments are explicitly desired.
+Import `n8n/workflow.json`, map credentials, set the workflow's error workflow to
+itself so the Error Trigger records retries, and publish. Keep only one production
+receiver and one active queue scheduler. The export is inactive to avoid accidental
+activation on import. Rebuilding the export does not deploy it.
+
+The existing App permissions are sufficient for the current rollout; no permissions
+were expanded. Subscribe to `pull_request` and `pull_request_review_comment` events.
+The production App webhook is:
+
+`https://n8n.weberaai.com/webhook/3251bb49-11ef-4c93-8fec-681c0a73329d/webhook`
+
+It now enters the rebuilt original workflow `q4ifTzOOrmBYZlXE` (72 nodes). The URL
+was preserved; the old workflow contents were replaced. The test repository hook
+704289110 is inactive so events are not delivered twice. Global commands are replies
+in inline review discussions; timeline commands are not globally subscribed.
+
+Disabled workflows: `C07dOoQFSOWfHWTX`, `mZSc0OsVXmYslZKI` (old forwarding wrappers),
+and `xEChpD4m09cY8Pef` (native test copy). The old `diffmind-worker` was stopped at
+cutover and is not part of either current compose file.
+
+## Operations and recovery
+
+Inspect the webhook execution first, then the schedule execution claiming that job.
+An idle schedule success does not establish that a review completed. Confirm the
+Qdrant search nodes, both DeepSeek nodes, and `Save published head and findings` ran.
+Failures retry up to three times with a delay; stale heads are superseded. Review
+publication is guarded by a lease and current-head checks. A fresh permitted command
+can request another review after an exhausted failure.
+
+```sh
+docker ps -a --filter name=diffmind
+docker logs --tail 50 diffmind-embeddings
+docker logs --tail 50 diffmind-qdrant
+docker stats --no-stream diffmind-embeddings diffmind-qdrant
+```
+
+Use PostgreSQL to inspect `dmn_jobs` status, attempts and safe failure reason. Keep
+n8n execution access restricted: execution data includes source snippets and ephemeral
+GitHub installation tokens. Configure execution pruning and database/cache retention.
+The vector index retains three revision heads per repository; Git bare repositories
+and database history require operator retention. Inference cache is capped at 100,000
+entries. No automated large-repository capacity guarantee has been established.
+
+The prior original workflow is backed up privately on homescale at
+`/home/hicoders/diffmind/old-workflow.json`; previous version
+`6e47bb50-5a0d-4241-b07f-ae10a87fab93` is available in n8n history. The previous App
+hook configuration is privately backed up under `data/worker/app-hook-before-native.json`.
+Rollback requires restoring the matching workflow and signing secret together. Do
+not activate old and new queue processors simultaneously.

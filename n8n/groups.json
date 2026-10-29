@@ -1,0 +1,135 @@
+[
+  {
+    "id": "ed7193d0-c834-49a8-984b-9bf0d923cef0",
+    "name": "GitHub identity and event queue",
+    "nodeNames": [
+      "Sign App identity for intake",
+      "Find App installation",
+      "Intake installation token",
+      "Fetch incoming PR",
+      "Is collaborator command",
+      "Check command author permission",
+      "Normalize incoming review job",
+      "Deduplicate and queue event"
+    ],
+    "description": "App authentication, collaborator permissions, delivery deduplication and durable queueing."
+  },
+  {
+    "id": "f3ccdd42-9c36-4126-8067-03c1ccb0d77c",
+    "name": "Claim and inspect PR state",
+    "nodeNames": [
+      "Claim next review job",
+      "A job was claimed",
+      "Sign App identity for review",
+      "Review installation token",
+      "Fetch current PR",
+      "Load previous review state",
+      "Prepare review context",
+      "Head still current and PR open"
+    ],
+    "description": "Claim one leased job, obtain App access and read the current PR and previous review."
+  },
+  {
+    "id": "36c1eeef-f0bd-4db2-88de-d0f29728306d",
+    "name": "Git history and source",
+    "nodeNames": [
+      "Fetch pinned Git commits",
+      "Read trusted repository rules",
+      "Parse full and incremental diffs",
+      "Read tracked source blobs",
+      "Chunk source with line ranges",
+      "Clear incomplete revision index",
+      "Load prepared chunk batches"
+    ],
+    "description": "Fetch immutable Git commits, parse diffs, read trusted rules and chunk tracked source files."
+  },
+  {
+    "id": "368d0a03-b11d-4b72-ae9d-cc3e612c87ea",
+    "name": "Index repository chunks",
+    "nodeNames": [
+      "Index chunk batches",
+      "Batch contains source chunks",
+      "Generate document embeddings",
+      "Generate lexical document vectors",
+      "Attach vectors to source chunks",
+      "Write chunks to Qdrant",
+      "Record empty source batch",
+      "Check indexed revision count",
+      "Require complete index"
+    ],
+    "description": "Batch local dense and BM25 embeddings, upsert Qdrant points and verify index completeness."
+  },
+  {
+    "id": "72199eff-6863-4d88-8d26-da7cae410992",
+    "name": "Retrieve and review each diff",
+    "nodeNames": [
+      "Review diff batches",
+      "Embed semantic search query",
+      "Embed lexical search query",
+      "Search semantic code context",
+      "Search lexical code context",
+      "Search exact symbols",
+      "Fuse rankings and build evidence",
+      "DeepSeek draft review",
+      "Parse draft findings",
+      "DeepSeek verify findings",
+      "Validate diff lines and citations"
+    ],
+    "description": "Explicit semantic, lexical and exact searches, fused evidence, DeepSeek draft and verification."
+  },
+  {
+    "id": "7adb2116-0a11-4bb2-bf45-8c9a86cf6b01",
+    "name": "Save review intent",
+    "nodeNames": [
+      "Collect verified review results",
+      "Persist publication intent"
+    ],
+    "description": "Persist verified results before any GitHub writes so retries reuse the same findings."
+  },
+  {
+    "id": "7aaa0ae7-6c3b-4be0-a23e-06c9dd81df9d",
+    "name": "Reconcile and guard publication",
+    "nodeNames": [
+      "Load saved publication intent",
+      "Fetch existing PR reviews",
+      "Fetch existing inline comments",
+      "Fetch existing summary comments",
+      "Reconcile existing bot comments",
+      "Recheck head before publication",
+      "Check active publication lease",
+      "Publish only current leased head"
+    ],
+    "description": "Read previous bot comments, suppress duplicates and check the current head and lease."
+  },
+  {
+    "id": "2491fd08-47bc-469e-9e14-e179650ee71c",
+    "name": "Post inline findings",
+    "nodeNames": [
+      "Has new inline findings",
+      "Publish inline GitHub review",
+      "Recheck head before summary",
+      "Summary head still current"
+    ],
+    "description": "Publish a commit-bound review only when it has new findings; recheck the head."
+  },
+  {
+    "id": "9ceff99d-6774-48fd-9d4b-71866be2002d",
+    "name": "Maintain summary and state",
+    "nodeNames": [
+      "Create or update PR summary",
+      "Select three recent revision indexes",
+      "Prune older Qdrant revisions",
+      "Save published head and findings"
+    ],
+    "description": "Maintain the PR summary, retain three revision indexes and save the published head."
+  },
+  {
+    "id": "2821b87d-8f9f-4c86-add9-5dcb9a9135bf",
+    "name": "Recover failed jobs",
+    "nodeNames": [
+      "Prepare safe retry metadata",
+      "Retry failed job up to three times"
+    ],
+    "description": "Record the failing node and retry the job up to three times."
+  }
+]
