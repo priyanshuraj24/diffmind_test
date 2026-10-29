@@ -13,9 +13,9 @@ rebuilt flow. The old forwarding workflows and temporary test workflow are inact
 
 1. Verify GitHub's signature and deduplicate events in PostgreSQL.
 2. Claim one durable job, obtain an App installation token, and check the PR head.
-3. Fetch immutable Git commits without checking out or executing repository code.
+3. Fetch immutable Git commits asynchronously so n8n's runner remains responsive, without checking out or executing repository code.
 4. Read trusted target-branch rules; parse full or incremental diffs and tracked blobs.
-5. Chunk source using function-boundary heuristics and bounded line windows.
+5. Chunk source using function-boundary heuristics, line windows and a complete-input byte bound.
 6. Call separate dense and BM25 embedding nodes; upsert and count the Qdrant index.
 7. Run semantic, lexical and exact-symbol searches, scoped to repository and head SHA.
 8. Fuse rankings and reserve evidence for each changed file.
@@ -77,6 +77,12 @@ comprehensive secret scanner. Relevant code and PR text are sent to DeepSeek.
 
 One review runs at a time. Source limits are 15 MB, 10,000 files, 250 KB per file and
 30,000 chunks; model review is capped at 12 batches and five findings per run.
+Dense inputs include at most 450 UTF-8 bytes of path, symbol and source, leaving
+headroom below BGE's 500-token service guard. Long lines are split with source
+offsets and line locations preserved; source text is never silently truncated.
+Dense queries use the same byte bound; lexical queries retain their separate budget.
+This conservative bound produces more chunks than character-only windows and may
+increase initial indexing time. Changing the embedding model requires revalidating it.
 Skipped content is reported as partial coverage. Embeddings run with a 1 GB memory
 limit and Qdrant with 2 GB; large-repository peak usage and latency remain unmeasured.
 Monitor Git caches, execution history, PostgreSQL history and model cache disk usage.

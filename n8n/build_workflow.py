@@ -16,8 +16,8 @@ def add(name,type,parameters=None,version=1,credentials=None,**settings):
     if credentials:n['credentials']=credentials
     n.update(settings);nodes.append(n);return name
 def code(name,file=None,js=None,common=True):
-    text=(ROOT/'code'/file).read_text() if file else js
-    if common:text=(ROOT/'code/_common.js').read_text()+'\n'+text
+    text=(ROOT/'code'/file).read_text(encoding='utf8') if file else js
+    if common:text=(ROOT/'code/_common.js').read_text(encoding='utf8')+'\n'+text
     return add(name,'code',{'jsCode':text},2)
 def link(a,b,index=0):
     out=connections.setdefault(a,{'main':[]})['main']
@@ -29,7 +29,7 @@ def cond(name,expression):
     return add(name,'if',{'conditions':{'options':{'caseSensitive':True,'leftValue':'','typeValidation':'strict','version':2},'conditions':[{'leftValue':ex(expression),'rightValue':True,'operator':{'type':'boolean','operation':'true','singleValue':True}}],'combinator':'and'}},2.3)
 PG={'postgres':{'id':'diffmindNativePG','name':'DiffMind review database'}}
 def sql(name,file=None,query=None,args='[]'):
-    return add(name,'postgres',{'operation':'executeQuery','query':(ROOT/'sql'/file).read_text() if file else query,'options':{'queryReplacement':ex(args)}},2.7,PG)
+    return add(name,'postgres',{'operation':'executeQuery','query':(ROOT/'sql'/file).read_text(encoding='utf8') if file else query,'options':{'queryReplacement':ex(args)}},2.7,PG)
 def http(name,url,method='GET',body=None,headers=None,auth=None,full=False,pages=False):
     p={'url':url,'method':method,'options':{'timeout':180000,'response':{'response':{'responseFormat':'json','fullResponse':full}}}}
     cred=None
@@ -95,7 +95,7 @@ count=q('Check indexed revision count','/points/count',"{filter:{must:[{key:'rep
 assertcount=code('Require complete index',js="const expected=$('Chunk source with line ranges').first().json.total_chunks;if($json.result.count!==expected)throw new Error('Index count mismatch');return [{json:{indexed:expected}}];",common=False)
 batches=code('Build per-diff retrieval queries','retrieval_batches.js')
 rloop=add('Review diff batches','splitInBatches',{'batchSize':1,'options':{}},3)
-qd=embed('Embed semantic search query','dense',"[$('Review diff batches').item.json.query || 'repository context']",True)
+qd=embed('Embed semantic search query','dense',"[$('Review diff batches').item.json.semantic_query || 'repository context']",True)
 qs=embed('Embed lexical search query','sparse',"[$('Review diff batches').item.json.query || 'repository context']",True)
 searchdense=q('Search semantic code context','/points/query',"{query:$('Embed semantic search query').item.json.vectors[0],using:'dense',filter:$('Review diff batches').item.json.filter,limit:30,with_payload:true}")
 searchsparse=q('Search lexical code context','/points/query',"{query:$('Embed lexical search query').item.json.vectors[0],using:'bm25',filter:$('Review diff batches').item.json.filter,limit:30,with_payload:true}")
@@ -146,5 +146,5 @@ for i,n in enumerate(nodes):
     for key in ('id','webhookId'):
         if key in old:n[key]=old[key]
 workflow={'name':'PR Review Bot','nodes':nodes,'connections':connections,'nodeGroups':json.loads((ROOT/'groups.json').read_text(encoding='utf8')),'settings':{'executionOrder':'v1','saveDataSuccessExecution':'all','saveDataErrorExecution':'all','saveManualExecutions':True,'executionTimeout':2700},'active':False}
-(ROOT/'workflow.json').write_text(json.dumps(workflow,indent=2),encoding='utf8')
+(ROOT/'workflow.json').write_text(json.dumps(workflow,indent=2)+'\n',encoding='utf8',newline='\n')
 print(json.dumps({'nodes':len(nodes),'connections':sum(len(o) for c in connections.values() for o in c['main'])}))

@@ -9,6 +9,10 @@ Use a trusted self-hosted n8n installation with Git available to Code nodes, the
 `crypto`, `fs` and `child_process` built-in modules enabled, the `jsonwebtoken` external module available, and a writable persistent
 `/home/node/.n8n-files` mount. The tested instance uses n8n 2.44.6. Git uses bare
 repositories and argument arrays; repository hooks and repository code are never run.
+Git subprocesses run asynchronously with a two-minute command timeout so long network
+fetches do not block the runner heartbeat. Error messages classify failures without
+printing Git stderr or credentials. Do not replace these calls with synchronous Git
+commands in Code nodes: a long fetch can cause n8n to terminate an unresponsive runner.
 
 Create a dedicated PostgreSQL role/database and apply `n8n/sql/schema.sql` there.
 Do not reuse n8n's own database. Create these credentials in n8n and map the export:

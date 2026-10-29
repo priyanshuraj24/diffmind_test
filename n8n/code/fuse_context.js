@@ -6,7 +6,7 @@ const scores=new Map(),byId=new Map();
 for(const list of [exact,sparse,dense])list.forEach((p,i)=>{scores.set(p.id,(scores.get(p.id)||0)+1/(61+i));byId.set(p.id,p.payload);});
 const ranked=[...scores.keys()].sort((a,b)=>scores.get(b)-scores.get(a)).slice(0,15).map(id=>byId.get(id));
 const selected=[],seen=new Set();let chars=0;
-for(const item of [...batch.local,...ranked]){const key=item.path+':'+item.start+':'+item.head;if(seen.has(key)||chars+item.text.length>32000)continue;seen.add(key);chars+=item.text.length;selected.push({...item,evidence_id:'E'+(selected.length+1)});}
+for(const item of [...batch.local,...ranked]){const key=item.path+':'+item.start+':'+(item.start_offset??item.start_column??0)+':'+item.head;if(seen.has(key)||chars+item.text.length>32000)continue;seen.add(key);chars+=item.text.length;selected.push({...item,evidence_id:'E'+(selected.length+1)});}
 if(batch.paths.length && !selected.length)throw new Error('No retrieval evidence for changed code');
 const ctx=$('Prepare review context').first().json,d=$('Parse full and incremental diffs').first().json;
 const outputSchema={summary:'string',findings:[{title:'string',body:'string',path:'repository-relative path',line:'integer',side:'RIGHT or LEFT',severity:'high or medium or low',category:'security or correctness or reliability or performance',scenario:'concrete failure scenario',evidence_ids:['E1'],suggestion:'optional exact single-line replacement or null'}]};
