@@ -10,6 +10,7 @@ class Payment:
 
 
 def refund(payment: Payment, actor_id: str, amount: int) -> int:
+    """Refund a positive amount owned by the actor within the remaining balance."""
     require_owner(actor_id, payment.owner_id)
     require_positive_cents(amount)
     remaining = payment.captured_cents - payment.refunded_cents
